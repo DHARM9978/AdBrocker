@@ -50,7 +50,6 @@ $number_of_advertisements = Total_Advertisements($con);
             </div> -->
         </div>
         <!--end breadcrumb-->
-
         <a href="advertiser_details.php">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-4">
                 <div class="col">
@@ -162,5 +161,5 @@ $number_of_advertisements = Total_Advertisements($con);
 </div>
 
 <?php
-  require 'footer.php';
+//   require 'footer.php';
 ?>

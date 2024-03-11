@@ -21,7 +21,7 @@ function Get_Admin($adm_email, $adm_password)
         $_SESSION["is_loggedin"] = true;
         $_SESSION["adm_email"] = $mydata['email'];
         $_SESSION["admin_name"] = $mydata['name'];
-        header('Location:/AdBroker_AdminPanel/Pages/ab-dashboard.php');
+        header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
     }else{
         // echo "<script>alert('$response');</script>";
         echo $response;

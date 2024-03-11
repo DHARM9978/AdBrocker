@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION["is_loggedin"] == false) {
-  header("Location:/AdBroker_AdminPanel/admin-login.php");
+    header("Location:/AdBrocker_Admin/admin-login.php");
 }
 
 require 'base.php';
@@ -287,7 +287,7 @@ if(isset($_REQUEST['btnupdateimage'])){
 <div class="overlay nav-toggle-icon"></div>
 
 <?php
-require 'footer.php';
+// require 'footer.php';
 ?>
 <!--end overlay-->
 </div>

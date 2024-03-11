@@ -1,7 +1,7 @@
 <?php
 
 if ($_SESSION["is_loggedin"] == false) {
-    header("Location:/AdBroker_AdminPanel/admin-login.php");
+    header("Location:/AdBrocker_Admin/admin-login.php");
   }
 
 
@@ -99,7 +99,7 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                                 <th>Name</th>
                                                 <th>Email-id</th>
                                                 <th>Status</th>
-                                                <th>Contact</th>
+                                                <!-- <th>Contact</th> -->
 
 
                                             </tr>
@@ -135,15 +135,7 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                                 ?>
 
                                                 </td>
-                                                <td>
-                                                    <?php
-                                                    foreach($row['last_sign_in'] as $date){
-                                                            $userdate=$date['seconds'];
-                                                            $finaldate = date('d-m-Y H:i:s', $userdate);
-                                                            echo $finaldate;
-                                                            break;
-                                                    } ?>
-                                                </td>
+                                                
 
                                             </tr>
                                             <?php 

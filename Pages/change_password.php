@@ -1,4 +1,11 @@
 <?php
+
+if ($_SESSION["is_loggedin"] == false) {
+    header("Location:/AdBrocker_Admin/admin-login.php");
+  }
+
+
+
 require 'base.php';
 require '../config.php';
 require '../Modules/adminmodule.php';
