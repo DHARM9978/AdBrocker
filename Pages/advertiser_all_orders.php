@@ -5,16 +5,24 @@ if ($_SESSION["is_loggedin"] == false) {
   }
 
 require 'base.php';
-require '../Modules/advertiser_order_Module.php';
-require '../config.php';
+// require '../Modules/advertiser_order_Module.php';
+// require '../config.php';
 
-$con = Db_Connection();
-$all_advertiser_order=Total_Orders($con);
+// $con = Db_Connection();
+// $all_advertiser_order=Total_Orders($con);
 
-$url = "";
-$method = "";
+// $url = "";
+// $method = "";
 
 //totalOrderAPI(https://localhost/advertise,);
+
+
+require "base.php";
+require "../Modules/AdvertiseAPI.php";
+
+
+$Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
+
 
 
 ?>
@@ -79,112 +87,104 @@ $method = "";
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-striped data-table" style="width: 100%">
+                                <table id="example" class="table table-striped data-table" style="width: 100%">
                                         <thead class="text-center">
                                             <tr>
-                                                <th>Advertiser Order Id</th>
-                                                <th>Advertiser Id</th>
-                                                <th>Advertiser Business Id</th>
-                                                <th>Advertiser Email</th>
-                                                <th>Enterprise Name</th>
-                                                <th>Order Date</th>
-                                                <th>Approve Date</th>
-                                                <th>Transaction Id</th>
-                                                <th>Payment Status</th>
-                                                <th>Publisher Availibility</th>
-                                                <th>Publihser Id</th>
-                                                <th>Payable Amount</th>
-                                                <th>Order Status</th>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Ramaine Views</th>
+                                                <th>Status </th>
+                                                <th>Approve</th>
+                                                <th>Create Date</th>
+                                                <th>Update Date</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             <?php
-                                    while ($row = $all_advertiser_order->fetch_assoc()) {
+                                    foreach($Data as $row) {
                                     ?>
                                             <tr>
-                                                <th scope="row">
-                                                    <?php echo $row["adv_order_id"]; ?>
-                                                </th>
                                                 <td>
-                                                    <?php echo $row["advertiser_id"]; ?>
+                                                    <?php echo $row['title']?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row["advertiser_bussiness_id"]; ?>
+                                                    <?php echo $row['type']?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row["advertiser_email"]; ?>
+                                                    <?php echo $row['remain_Views']?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row["enterprise_name"]; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row["order_date"]; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row["approve_date"]; ?>
-                                                </td>
-                                                <td>
-
                                                     <?php
-                                                    if($row["transaction_id"]==""){
+                                                    if($row['status'] == "ongoing"){
                                                         ?>
-                                                    <p style="text-align: center; color: red;"><B>NULL</B></p>
+                                                    <div class="text-center"
+                                                        style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                        <p class="p-1"><?php echo $row['status']?></p>
+                                                    </div>
+                                                    <?php } 
+                                                    else if ($row['status'] == "pending")
+                                                     {?>
+                                                    <div class="text-center"
+                                                        style="background-color: #c9c936; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                        <p class="p-1"><?php echo $row['status']?></p>
+                                                    </div>
                                                     <?php
                                                     }
-                                                    else{
-                                                         echo $row["transaction_id"]; 
-                                                    }
-                                                ?>
-        
+                                                    else{?>
+                                                    <div class="text-center"
+                                                        style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                        <p class="p-1"><?php echo $row['status']?></p>
+                                                    </div>
+                                                    <?php }?>
+                                                </td>
+                                                <td>
+                                                    <b> <?php 
+                                                if($row['approve']==true){
+                                                    ?>
+                                                        <div class="text-center"
+                                                            style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                            <p class="p-1"><?php echo "Approved" ?></p>
+                                                        </div>
+                                                        <?php } 
+                                                    else { ?>
+                                                        <div class="text-center"
+                                                            style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                            <p class="p-1"><?php echo "Not Approved" ?></p>
+                                                        </div>
+                                                        <?php }
+
+                                                        ?>
+                                                    </b>
                                                 </td>
                                                 <td>
                                                     <?php 
-                                                    if($row["payment_status"] == 1){
-                                                       ?>
-                                                    <p>Successful</p>
-                                                    <?php
-                                                    } 
-                                                    else{
-                                                       ?>
-                                                    <p>Unseccessfull</p>
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                </td>
-
-                                                <td>
-                                                    <?php 
-                                                        if($row['publisher_availablility'] == 1){
-                                                            ?> <p>Available</p><?php
-                                                        }
-                                                        else{
-                                                            ?><p> Not Available</p><?php
-                                                        }
-                                                    ?>
                                                     
+                                                    $date= $row['updatedAt'];
+                                                    $finaldate=date("d-m-Y", strtotime($date));
+                                                    echo $finaldate;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                    $date= $row['updatedAt'];
+                                                    $finaldate=date("d-m-Y", strtotime($date));
+                                                    echo $finaldate;
+                                                    ?>
                                                 </td>
 
-                                                <td>
-                                                <?php
-                                                    if($row["publisher_id"]==""){
-                                                        ?>
-                                                    <p style="text-align: center; color: red;"><B>NULL</B></p>
-                                                    <?php
-                                                    }
-                                                    else{
-                                                         echo $row["publisher_id"]; 
-                                                    }
-                                                ?>
-                                                   
-                                                </td>
-                                                <td>
-                                                    <?php echo $row["payable_amount"]; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row["order_status"]; ?>
-                                                </td>
-
+                                                <!-- <td> -->
+                                                <!-- <form method="POST" action="./ads_page.php"> -->
+                                                <!-- /            Create a form for deletion -->
+                                                <!-- <input type="hidden" name="pub_o_id" -->
+                                                <!-- value="$row['advertiserId']"> -->
+                                                <!-- <button type="submit" class="btn btn-success" name="btnapprove" -->
+                                                <!-- value="" -->
+                                                <!-- onclick="return confirm('Are you sure , you want to Approve this Publisher?')"> -->
+                                                <!-- <i class="fa-solid fa-check"></i> -->
+                                                <!-- <i class="bi bi-check2"></i> -->
+                                                <!-- </button></a> -->
+                                                <!--    </form> -->
+                                                <!-- </td> -->
 
 
                                             </tr>

@@ -153,6 +153,22 @@ $result1=$result->fetch_assoc();
           </a>
 
         </li>
+
+        <li>
+          <a href="advertiser_history_order.php">
+            <div class="parent-icon">
+              <ion-icon name="newspaper-outline"></ion-icon>
+            </div>
+            <div class="menu-title">History Orders</div>
+          </a>
+
+        </li>
+
+
+
+
+
+
         <li>
           <a href="advertiser_pending_Orders.php">
             <div class="parent-icon">
@@ -197,7 +213,7 @@ $result1=$result->fetch_assoc();
 
         </li>
         <hr>
-        <li class="menu-label">Advertise</li>
+        <!-- <li class="menu-label">Advertise</li>
         <li>
           <a href="ads_page.php">
             <div class="parent-icon">
@@ -206,7 +222,7 @@ $result1=$result->fetch_assoc();
             <div class="menu-title">Total Ads</div>
           </a>
 
-        </li>
+        </li> -->
         <!-- <li>
           <a href="#">
             <div class="parent-icon">
@@ -216,7 +232,7 @@ $result1=$result->fetch_assoc();
           </a>
 
         </li> -->
-        <hr>
+        <!-- <hr> -->
         <li class="menu-label">Profile</li>
         <li>
           <a href="./Profile.php">

@@ -100,7 +100,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                         <tbody class="text-center">
                                             <?php
                                     foreach($Data as $row) {
-                                        if($row['status']=="ongoing"){
+                                        if($row['status']=="history"){
                                     ?>
                                             <tr>
                                                 <td>
