@@ -67,8 +67,9 @@ if(isset($_REQUEST['btnchangepassword'])){
                             </div>
                             <br>
                             <div class="text-start mt-3">
-                                <button type="submit" class="btn btn-primary px-4" style="margin-left:40%;background-color:#3c096c"
-                                    id="btnchangepassword" name="btnchangepassword">Save
+                                <button type="submit" class="btn btn-primary px-4"
+                                    style="margin-left:40%;background-color:#3c096c" id="btnchangepassword"
+                                    name="btnchangepassword">Save
                                     Changes</button>
                             </div>
                         </form>
@@ -90,54 +91,50 @@ if(isset($_REQUEST['btnchangepassword'])){
 
 
 <script>
-    $(document).ready(function () {
+$(document).ready(function() {
 
-        $('#CurrentPassword').blur(function () {
-            $("#currentpassword").hide();
-            currnetpasswordvalidation();
-        });
-
-
-        $('#NewPassword').blur(function () {
-            $("#newpassowrd").hide();
-            newpasswordvalidation();
-        });
-
-
-        $('#NewConformPassword').blur(function () {
-            $("#conformnewpassword").hide();
-            conformnewpasswordvalidation();
-        });
+    $('#CurrentPassword').blur(function() {
+        $("#currentpassword").hide();
+        currnetpasswordvalidation();
     });
 
-    function currnetpasswordvalidation() {
-        var currentpassword = $("#CurrentPassword").val();
 
-        if (currentpassword == "") {
-            $("#currentpassword").show();
-            $("#currentpassword").html("Password can't be Empty");
-            return false;
-        }
+    $('#NewPassword').blur(function() {
+        $("#newpassowrd").hide();
+        newpasswordvalidation();
+    });
+
+
+    $('#NewConformPassword').blur(function() {
+        $("#conformnewpassword").hide();
+        conformnewpasswordvalidation();
+    });
+});
+
+function currnetpasswordvalidation() {
+    var currentpassword = $("#CurrentPassword").val();
+
+    if (currentpassword == "") {
+        $("#currentpassword").show();
+        $("#currentpassword").html("Password can't be Empty");
+        return false;
     }
+}
 
-    function newpasswordvalidation() {
-        var newpassword = $("#NewPassword").val();
+function newpasswordvalidation() {
+    var newpassword = $("#NewPassword").val();
 
-    }
+}
 
-    function conformnewpasswordvalidation() {
-        var conformpassword = $("#NewConformPassword").val();
+function conformnewpasswordvalidation() {
+    var conformpassword = $("#NewConformPassword").val();
 
-    }
+}
 </script>
 
 </div>
 
 
-<?php
-require 'footer.php';
-
-?>
 <!--end wrapper-->
 
 </div>

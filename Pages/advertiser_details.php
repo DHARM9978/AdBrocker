@@ -8,17 +8,6 @@ if ($_SESSION["is_loggedin"] == false) {
 
 require 'base.php';
 require '../Modules/AdvertiserAPI.php';
-// require "../config.php";
-// require "../Modules/advertisermodule.php";
-
-
-// $con = Db_Connection();
-// $all_Advertiser = Get_All_Advertisers($con);
-
-// if (isset($_REQUEST["advertiser_id"])) {
-//     Remove_Advertiser($con, $_REQUEST["advertiser_id"]);
-//     $all_Admins = Get_All_Advertisers($con);
-// }
 
 $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers");
 
@@ -64,14 +53,7 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
 
         <main class="" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="./ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">Advertisers</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Advertisers</h2>
                 </div>
@@ -98,7 +80,8 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                     <table id="example" class="table table-striped data-table" style="width: 100%">
                                         <thead class="text-center">
                                             <tr>
-                                                <!-- <th>Profile Pic</th> -->
+                                                <th>Profile Pic</th>
+
                                                 <th>Name</th>
                                                 <th>Brand Name</th>
                                                 <th>Email</th>
@@ -106,6 +89,7 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                                 <th>User Status</th>
                                                 <th>Brand Adress</th>
                                                 <th>Brand Catagory</th>
+                                                <th>Remove Advertiser</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
@@ -113,6 +97,12 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                     foreach($Data as $row) {
                                     ?>
                                             <tr>
+                                                <td>
+
+                                                    <img src="<?php echo $row['profile_pic'] ?>" height="50px"
+                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+                                                </td>
 
                                                 <td>
                                                     <?php echo $row['name']?>
@@ -153,6 +143,17 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                                 <td>
                                                     <?php echo $row['brand_category'] ?>
                                                 </td>
+                                                <td>
+                                                <form method="POST" action="./advertiser_details.php">
+                                                        <!-- Create a form for deletion -->
+                                                        <input type="hidden" name="Advertiser_id"
+                                                            value="">
+                                                        <button type="submit" class="btn btn-secondary" name="delete"
+                                                            onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
+                                                                class="far fa-trash-alt"
+                                                                aria-hidden="true"></i></button>
+                                                    </form>
+                                                </td>
 
                                             </tr>
                                             <?php } ?>
@@ -170,7 +171,3 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
 </div>
 </div>
 <!-- End of advertiser Details -->
-
-<?php
-//   require 'footer.php';
-?>

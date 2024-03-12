@@ -33,31 +33,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 
-            <!-- <div class="ps-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0 align-items-center">
-                        <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                    </ol>
-                </nav>
-            </div> -->
+
 
             <a href="ab-dashboard.php">
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
-             <i class="fa-solid fa-chevron-right" style=""></i>
+            <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
             <a href="subscription.php">
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Subscription
                 </div>
             </a>
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
-             <i class="fa-solid fa-chevron-right" style=""></i>
+            <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
 
@@ -86,15 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <main class="" style="color: #0F1035;">
-            <!-- <div class="my-3">
-        <div class="col-md-12 text-left">
-            <h4>
-                <a style="text-decoration: none;color:#ef00ffd1" href="ab-dashboard.php">Dashboard/</a>
-                <a style="text-decoration: none;color:#ef00ffd1" href="subscription.php">Subscription/</a>
-                <span style="color: #0000FF;">Add-Subscription</span>
-            </h4>
-        </div>
-    </div> -->
 
             <div class="mb-3">
                 <form action="./subscription.php">
@@ -155,8 +135,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 </div>
-
-<?php
-
-// require 'footer.php';
-?>

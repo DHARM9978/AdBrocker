@@ -29,8 +29,6 @@ if (isset($_REQUEST["subscription_id"])) {
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
@@ -58,14 +56,7 @@ if (isset($_REQUEST["subscription_id"])) {
 
         <main class="" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">Subscription</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Subscription</h2>
                 </div>
@@ -153,7 +144,3 @@ if (isset($_REQUEST["subscription_id"])) {
 
 
 <!-- End Of Subscription -->
-
-<?php
-//   require 'footer.php';
-?>

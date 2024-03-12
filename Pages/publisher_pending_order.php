@@ -31,18 +31,16 @@ if(isset($_REQUEST['btndelete'])){
     <div class="page-content">
 
 
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <a href="ab-dashboard.php">
-                <div class="breadcrumb-item pe-3"
-                    style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
+                <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-            
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
-            <div class="breadcrumb-title active pe-3" style="color:#0000FF;border:none;font-size:25px">All Pending Publisher Order</div>
+            <div class="breadcrumb-title active pe-3" style="color:#0000FF;border:none;font-size:25px">All Pending
+                Publisher Order</div>
 
             <!-- <div class="ms-auto">
                 <div class="btn-group">
@@ -64,14 +62,7 @@ if(isset($_REQUEST['btndelete'])){
         </div>
         <main class="" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">All Publisher Orders</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Orders</h2>
                 </div>
@@ -101,9 +92,9 @@ if(isset($_REQUEST['btndelete'])){
                                                 <th>Advertisement Id</th>
                                                 <th>Approve Order</th>
                                                 <th>Cancle Order</th>
-                                                
-                                                
-                                               
+
+
+
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
@@ -141,13 +132,13 @@ if(isset($_REQUEST['btndelete'])){
                                                 <td>
                                                     <?php echo $row["admin_approval"]; ?>
                                                 </td>
-        
+
                                                 <td>
                                                     <?php
                                                         if($row["advertisement_id"]==''){
                                                             ?>
-                                                                <p style="color:red;"><b> Null </b></p>
-                                                            <?php
+                                                    <p style="color:red;"><b> Null </b></p>
+                                                    <?php
                                                         }
                                                     
                                                     ?>
@@ -155,7 +146,7 @@ if(isset($_REQUEST['btndelete'])){
                                                 </td>
 
                                                 <td>
-                                                <form method="POST" action="./publisher_pending_order.php">
+                                                    <form method="POST" action="./publisher_pending_order.php">
                                                         <!-- Create a form for deletion -->
                                                         <input type="hidden" name="pub_o_id"
                                                             value="<?php echo $row['pub_order_id']; ?>">
@@ -168,7 +159,7 @@ if(isset($_REQUEST['btndelete'])){
                                                     </form>
                                                 </td>
                                                 <td>
-                                                <form method="POST" action="./publisher_pending_order.php">
+                                                    <form method="POST" action="./publisher_pending_order.php">
                                                         <!-- Create a form for deletion -->
                                                         <input type="hidden" name="pub_order_id"
                                                             value="<?php echo $row['pub_order_id']; ?>">
@@ -196,9 +187,3 @@ if(isset($_REQUEST['btndelete'])){
 
 <!-- end of publisher details -->
 </div>
-
-
-
-<?php
-//    require 'footer.php';
-?>

@@ -48,6 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="input-box">
 
                         <header>Welcome Admin</header>
+
+                        <!-- <img src="https://firebasestorage.googleapis.com/v0/b/adbrokers-86765.appspot.com/o/Profiles%2FFcejZKgNt4Sf7vBBFikMljGQ7F32.jpg?alt=media&token=35619ca0-f208-4a0a-8864-a435be377351" 
+alt="Cheetah!" /> -->
+
                         <form name="loginform" method="post">
                             <div class="input-field">
                                 <input type="email" class="input" id="txtemail" name="adm_email" value="" autocomplete="off"

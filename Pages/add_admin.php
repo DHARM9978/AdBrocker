@@ -41,15 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <a href="ab-dashboard.php">
-                    <div class="breadcrumb-item pe-3"
-                        style="color:#ef00ffd1;font-size:25px;font-weight:400">Dashboard
+                    <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:400">Dashboard
                     </div>
                 </a>
                 <i class="fa-solid fa-chevron-right" style=""></i>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="admin_details.php">
-                    <div class="breadcrumb-item pe-3"
-                        style="color:#ef00ffd1;font-size:25px;font-weight:400">Admin
+                    <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:400">Admin
                     </div>
                 </a>
                 <i class="fa-solid fa-chevron-right" style=""></i>
@@ -76,15 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div> -->
             </div>
-            <!-- <div class="my-3">
-                <div class="col-md-12 text-left">
-                    <h4>
-                        <a style="text-decoration: none;color:#ef00ffd1" href="./ab-dashboard.php">Dashboard/</a>
-                        <a style="text-decoration: none;color:#ef00ffd1" href="./admin_details.php">Admin/</a>
-                        <span style="color: #0000FF;">Add-Admin</span>
-                    </h4>
-                </div>
-            </div> -->
+
             <br>
 
             <div class="mb-3">
@@ -94,7 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             background:#3c096c;
                             color: #edf2f3;
                             font-weight: 500;">
-                            <span class="me-2"><i class="fa-solid fa-arrow-left"></i></span> Back to Admin Details</button>
+                            <span class="me-2"><i class="fa-solid fa-arrow-left"></i></span> Back to Admin
+                            Details</button>
                     </div>
                 </form>
             </div>
@@ -104,8 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="mt-5 mb-3 d-flex justify-content-center">
-                <div class="card p-2"
-                    style="width: 90%;">
+                <div class="card p-2" style="width: 90%;">
                     <div class="container">
                         <form action="./add_admin.php" method="POST">
                             <div class="mb-3">
@@ -162,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             function successMessage() {
                 alert(
                     "Admin Added Successfully \n Now,You can see this new user in Admin Details Page"
-                    ); // this is the message in ""
+                ); // this is the message in ""
             }
             </script>
             <script>
@@ -304,8 +294,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 </div>
-
-<?php
-// require 'footer.php';
-
-?>

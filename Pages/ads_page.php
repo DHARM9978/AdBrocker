@@ -22,8 +22,6 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
@@ -50,14 +48,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
 
         <main class=" pt-3" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="./ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">Ads</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Advertisements</h2>
                 </div>
@@ -155,21 +146,6 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                     ?>
                                                 </td>
 
-                                                <!-- <td> -->
-                                                <!-- <form method="POST" action="./ads_page.php"> -->
-                                                <!-- /            Create a form for deletion -->
-                                                <!-- <input type="hidden" name="pub_o_id" -->
-                                                <!-- value="$row['advertiserId']"> -->
-                                                <!-- <button type="submit" class="btn btn-success" name="btnapprove" -->
-                                                <!-- value="" -->
-                                                <!-- onclick="return confirm('Are you sure , you want to Approve this Publisher?')"> -->
-                                                <!-- <i class="fa-solid fa-check"></i> -->
-                                                <!-- <i class="bi bi-check2"></i> -->
-                                                <!-- </button></a> -->
-                                                <!--    </form> -->
-                                                <!-- </td> -->
-
-
                                             </tr>
                                             <?php } ?>
                                         </tbody>
@@ -184,7 +160,3 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
     </div>
 </div>
 </div>
-
-<?php
-//   require 'footer.php';
-?>

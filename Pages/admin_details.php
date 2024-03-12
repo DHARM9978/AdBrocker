@@ -4,23 +4,11 @@ if ($_SESSION["is_loggedin"] == false) {
     header("Location:/AdBrocker_Admin/admin-login.php");
   }
 
-require 'base.php';
-// require '../config.php';
-// require '../Modules/adminmodule.php';   
+require 'base.php';   
 require '../Modules/AdminAPI.php';
 
-// $con = Db_Connection();
-// $all_Admins = Get_All_Admins($con);
-
-
-// if (isset($_REQUEST["admin_id"])) {
-//     Remove_Admin($con, $_REQUEST["admin_id"]);
-//     $all_Admins = Get_All_Admins($con);
-// }
-
-
 $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
-
+$TotalAdmin= count($Data);
 
 ?>
 
@@ -28,10 +16,7 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
 <!-- Start of admin details -->
 
 <div class="page-content-wrapper">
-
     <div class="page-content">
-
-
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <a href="ab-dashboard.php">
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
@@ -66,18 +51,11 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
 
         <main class="" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="./ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">Admin</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Admins</h2>
                 </div>
-                <div class="mb-3">nb hh
+                <div class="mb-3">
                     <form action="./add_admin.php">
                         <div class="d-flex justify-content-end mb-3 me-2 text-center">
                             <button type="submit" name="add_admin_btn" class="btn" style="
@@ -93,6 +71,7 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
                         <div class="card">
                             <div class="card-header" style="background-color: #3c096c;">
                                 <h4 class="text-center text-white">Admin Details</h4>
+
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -104,6 +83,7 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
                                                 <th>Contact No.</th>
                                                 <th>Status</th>
                                                 <th>Last Sign In</th>
+                                                <th>Remove Admin</th>
 
                                             </tr>
                                         </thead>
@@ -137,7 +117,7 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
                                                         style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo 'Inactive User'?></p>
                                                     </div>
-                                                    
+
 
                                                     <?php
                                                     }
@@ -153,6 +133,17 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
                                                     
 
                                                     ?>
+                                                </td>
+                                                <td>
+                                                <form method="POST" action="./admin_details.php">
+                                                        <!-- Create a form for deletion -->
+                                                        <input type="hidden" name="Admin_id"
+                                                            value="">
+                                                        <button type="submit" class="btn btn-secondary" name="delete"
+                                                            onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
+                                                                class="far fa-trash-alt"
+                                                                aria-hidden="true"></i></button>
+                                                    </form>
                                                 </td>
 
                                             </tr>
@@ -170,6 +161,3 @@ $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
     </div>
 </div>
 </div>
-<?php
-//   require 'footer.php';
-?>

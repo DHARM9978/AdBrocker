@@ -5,17 +5,27 @@ if ($_SESSION["is_loggedin"] == false) {
 }
 
 require './base.php';
-require '../config.php';
-require '../Modules/dashboardmodule.php';
+require '../Modules/AdminAPI.php';
+require '../Modules/AdvertiserAPI.php';
+require '../Modules/PublisherAPI.php';
+require "../Modules/AdvertiseAPI.php";
 
 
 
-$con = Db_Connection();
 
-$number_of_advertisers = Total_Advertisers($con);
-$number_of_publishers = Total_Publishers($con);
-$number_of_admins = Total_Admins($con);
-$number_of_advertisements = Total_Advertisements($con);
+
+$AdminData=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
+$TotalAdmin= count($AdminData);
+
+$AdvertiserData=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers");
+$TotalAdvertiser=count($AdvertiserData);
+
+$PublisherData=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
+$TotalPublisher=count($PublisherData);
+
+$AdData=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
+$TotalAd=count($AdData);
+
 
 ?>
 
@@ -68,7 +78,8 @@ $number_of_advertisements = Total_Advertisements($con);
                             <div class="d-flex align-items-center mt-3">
                                 <div>
                                     <h4 class="mb-0"><b>
-                                            <?php echo $number_of_advertisers ?>
+                                            <?php echo $TotalAdvertiser ?>
+                                          
                                         </b></h4>
                                 </div>
                             </div>
@@ -93,7 +104,7 @@ $number_of_advertisements = Total_Advertisements($con);
                         <div class="d-flex align-items-center mt-3">
                             <div>
                                 <h4 class="mb-0"><b>
-                                        <?php echo $number_of_publishers ?>
+                                        <?php echo $TotalPublisher ?>
                                     </b></h4>
                             </div>
                         </div>
@@ -119,7 +130,7 @@ $number_of_advertisements = Total_Advertisements($con);
                         <div class="d-flex align-items-center mt-3">
                             <div>
                                 <h4 class="mb-0"><b>
-                                        <?php echo $number_of_admins ?>
+                                        <?php echo $TotalAdmin ?>
                                     </b></h4>
                             </div>
                         </div>
@@ -144,7 +155,7 @@ $number_of_advertisements = Total_Advertisements($con);
                         <div class="d-flex align-items-center mt-3">
                             <div>
                                 <h4 class="mb-0"><b>
-                                        <?php echo $number_of_advertisements ?>
+                                        <?php echo $TotalAd ?>
                                     </b></h4>
                             </div>
                         </div>
@@ -159,7 +170,3 @@ $number_of_advertisements = Total_Advertisements($con);
 </div>
 <!--end page content wrapper-->
 </div>
-
-<?php
-//   require 'footer.php';
-?>

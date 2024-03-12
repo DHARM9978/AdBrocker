@@ -48,15 +48,19 @@ if(isset($_REQUEST['btnupdateimage'])){
 }
 ?>
 
-
 <!-- start page content wrapper-->
-<div class="page-content-wrapper">
+
+
+
+
+
+"|dexdrfegxxxxxxxxFDG<div class="page-content-wrapper">
     <!-- start page content-->
     <div class="page-content">
 
 
-    
- 
+
+
 
         <!--start breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -65,7 +69,7 @@ if(isset($_REQUEST['btnupdateimage'])){
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-            
+
 
             <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-chevron-right" style=""></i>
@@ -119,9 +123,10 @@ if(isset($_REQUEST['btnupdateimage'])){
                             <form action="Profile.php" method="post" enctype="multipart/form-data" autocomplete="off">
                                 <label for="chooseimage">
                                     <!-- <img src="../assets/images/Default_Image.png"> -->
-                                    <img src="../ProfileImages/<?php echo $finaladmindata['adm_image'] ?>"  style="height:150px;width:150px"> 
+                                    <img src="../ProfileImages/<?php echo $finaladmindata['adm_image'] ?>"
+                                        style="height:150px;width:150px">
                                 </label>
-                                
+
 
                                 <input type="file" id="chooseimage" name="chooseimage" accept=".jpg, .jpeg, .png"
                                     value="" style="display:none">
@@ -286,9 +291,6 @@ if(isset($_REQUEST['btnupdateimage'])){
 <!--start overlay-->
 <div class="overlay nav-toggle-icon"></div>
 
-<?php
-// require 'footer.php';
-?>
 <!--end overlay-->
 </div>
 <!--end wrapper-->

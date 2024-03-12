@@ -7,17 +7,7 @@ if ($_SESSION["is_loggedin"] == false) {
 
 require 'base.php';
 require '../Modules/PublisherAPI.php';
-// require "../config.php";
-// require "../Modules/publishermodule.php";
 
-// $con = Db_Connection();
-// $all_Publisher = Get_All_Publishers($con);
-
-
-// if (isset($_REQUEST["publisher_id"])) {
-//     Remove_Publisher($con, $_REQUEST["publisher_id"]);
-//     $all_Publisher = Get_All_Publishers($con);
-// }
 
 $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
 
@@ -34,8 +24,6 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                 <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
@@ -62,14 +50,7 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
 
         <main class="" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">Publisher</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Publisher</h2>
                 </div>
@@ -98,8 +79,9 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Email-id</th>
+                                                <th>Contact</th>
                                                 <th>Status</th>
-                                                <!-- <th>Contact</th> -->
+                                                <th>Remove Publisher</th>
 
 
                                             </tr>
@@ -114,6 +96,9 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                                 </td>
                                                 <td>
                                                     <?php echo $row['email'] ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['contact'] ?>
                                                 </td>
                                                 <td>
                                                     <?php
@@ -135,7 +120,18 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                                 ?>
 
                                                 </td>
-                                                
+                                                <td>
+                                                <form method="POST" action="./publisher_details.php">
+                                                        <!-- Create a form for deletion -->
+                                                        <input type="hidden" name="Publisher_id"
+                                                            value="">
+                                                        <button type="submit" class="btn btn-secondary" name="delete"
+                                                            onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
+                                                                class="far fa-trash-alt"
+                                                                aria-hidden="true"></i></button>
+                                                    </form>
+                                                </td>
+
 
                                             </tr>
                                             <?php 
@@ -155,7 +151,3 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
 
 <!-- end of publisher details -->
 </div>
-
-<?php
-   require 'footer.php';
-?>

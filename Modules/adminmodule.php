@@ -16,12 +16,17 @@ function Get_Admin($adm_email, $adm_password)
     $response=LoginRequest('https://admanager-s9eo.onrender.com/user/login',$param);
 
     $mydata = json_decode($response, true);
+    // echo $mydata['contactNo'];
     
-    if (isset($mydata['_id'])) {
-        $_SESSION["is_loggedin"] = true;
+    if ($mydata['email']) {
+        $_SESSION["is_loggedin"] = true; 
         $_SESSION["adm_email"] = $mydata['email'];
         $_SESSION["admin_name"] = $mydata['name'];
+        $_SESSION["admin_contact"] = $mydata['contactNo'];
+      
+
         header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+        
     }else{
         // echo "<script>alert('$response');</script>";
         echo $response;
@@ -51,6 +56,10 @@ function Get_Admin($adm_email, $adm_password)
         // echo "<script>alert('Invailed Email or Password');</script>";
     // }
     
+}
+
+function Admin_Data(){
+
 }
 
 function Add_New_Admin($con, $adm_id, $adm_name, $adm_email, $adm_contact, $adm_role, $password)

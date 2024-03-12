@@ -4,19 +4,6 @@ if ($_SESSION["is_loggedin"] == false) {
     header("Location:/AdBrocker_Admin/admin-login.php");
   }
 
-require 'base.php';
-// require '../Modules/advertiser_order_Module.php';
-// require '../config.php';
-
-// $con = Db_Connection();
-// $all_advertiser_order=Total_Orders($con);
-
-// $url = "";
-// $method = "";
-
-//totalOrderAPI(https://localhost/advertise,);
-
-
 require "base.php";
 require "../Modules/AdvertiseAPI.php";
 
@@ -32,18 +19,16 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
 
     <div class="page-content">
 
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <a href="ab-dashboard.php">
-                <div class="breadcrumb-item pe-3"
-                    style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
+                <div class="breadcrumb-item pe-3" style="color:#ef00ffd1;font-size:25px;font-weight:500;">Dashboard
                 </div>
             </a>
-            
-            <!-- <i class="fa-solid fa-arrow-right" style="font-size:20px;"></i> -->
             <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
-            <div class="breadcrumb-title active pe-3" style="color:#0000FF;border:none;font-size:25px">All Advertiser Order</div>
+            <div class="breadcrumb-title active pe-3" style="color:#0000FF;border:none;font-size:25px">All Advertiser
+                Order</div>
 
             <!-- <div class="ms-auto">
                 <div class="btn-group">
@@ -66,14 +51,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
 
         <main class="" style="color: #0F1035;">
             <div class="p-2">
-                <!-- <div class="my-3">
-                    <div class="col-md-12 text-left">
-                        <h4>
-                            <a style="text-decoration: none;color:#ef00ffd1" href="ab-dashboard.php">Dashboard/</a>
-                            <span style="color: #0000FF;">All Advertiser Orders</span>
-                        </h4>
-                    </div>
-                </div> -->
+
                 <div class="text-center mt-2 mb-3">
                     <h2>All Orders</h2>
                 </div>
@@ -87,7 +65,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                <table id="example" class="table table-striped data-table" style="width: 100%">
+                                    <table id="example" class="table table-striped data-table" style="width: 100%">
                                         <thead class="text-center">
                                             <tr>
                                                 <th>Name</th>
@@ -171,22 +149,6 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                     echo $finaldate;
                                                     ?>
                                                 </td>
-
-                                                <!-- <td> -->
-                                                <!-- <form method="POST" action="./ads_page.php"> -->
-                                                <!-- /            Create a form for deletion -->
-                                                <!-- <input type="hidden" name="pub_o_id" -->
-                                                <!-- value="$row['advertiserId']"> -->
-                                                <!-- <button type="submit" class="btn btn-success" name="btnapprove" -->
-                                                <!-- value="" -->
-                                                <!-- onclick="return confirm('Are you sure , you want to Approve this Publisher?')"> -->
-                                                <!-- <i class="fa-solid fa-check"></i> -->
-                                                <!-- <i class="bi bi-check2"></i> -->
-                                                <!-- </button></a> -->
-                                                <!--    </form> -->
-                                                <!-- </td> -->
-
-
                                             </tr>
                                             <?php } ?>
                                         </tbody>
@@ -203,7 +165,3 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
 
 <!-- end of publisher details -->
 </div>
-
-<?php
-//    require 'footer.php';
-?>
