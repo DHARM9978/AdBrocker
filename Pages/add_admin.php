@@ -6,16 +6,11 @@ if ($_SESSION["is_loggedin"] == false) {
   
 require 'base.php';
 require '../Modules/adminmodule.php';
-require '../functions.php';
-require '../config.php';
+require '../Modules/AdminAPI.php';
 
-
-$con = Db_Connection();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $encrypt_password = "";
-    $adm_id = Admin_Unique_id($con);
 
     $adm_name = trim($_POST["adm_name"]);
     $adm_email = trim($_POST["adm_email"]);
@@ -23,9 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adm_role = trim($_POST["adm_role"]);
     $adm_password = trim($_POST["adm_password"]);
 
-    $encrypt_password = md5($adm_password);
-    Add_New_Admin($con, $adm_id, $adm_name, $adm_email, $adm_contact, $adm_role, $encrypt_password);
+  
+    Add_New_Admin($adm_name, $adm_email, $adm_contact, $adm_role, $adm_password);
 }
+
 ?>
 
 <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -126,8 +122,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label class="form-label">Admin Role</label>
                                 <select name="adm_role" class="form-select form-select-md mb-3" require>
                                     <!-- <option value="default" selected>Select Admin Role</option > -->
-                                    <option value="main">main</option>
-                                    <option value="Approving Orders" selected>Approving Orders</option>
+                                    <option value="main">Main Admin</option>
+                                    <option value="Approving Orders" selected>Approving Orders Admin</option>
                                 </select>
                             </div>
                             <div class="mb-3">

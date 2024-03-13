@@ -1,7 +1,6 @@
 <?php
 // require "./config.php";
 require "./Modules/adminmodule.php";
-
 require './Modules/LoginAPI.php';
 
 // $con = Db_Connection();

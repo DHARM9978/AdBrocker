@@ -5,13 +5,25 @@ if ($_SESSION["is_loggedin"] == false) {
   }
 
 
-require "base.php";
+// require "base.php";
 require "../Modules/AdvertiseAPI.php";
+require '../Modules/advertiser_order_Module.php';
 
 
 $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
 
 
+if(isset($_REQUEST['btnapprove'])){
+
+$id=$_REQUEST['advid'];
+
+
+Pending_to_Approve($id);
+
+
+
+
+}
 
 ?>
 
@@ -71,9 +83,11 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                 <table id="example" class="table table-striped data-table" style="width: 100%">
                                     <thead class="text-center">
                                         <tr>
+                                            <th>Ad Image</th>
                                             <th>Name</th>
                                             <th>Type</th>
                                             <th>Ramaine Views</th>
+                                            <th>Catagoty</th>
                                             <th>Status </th>
                                             <th>Approve</th>
                                             <th>Create Date</th>
@@ -88,41 +102,63 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                         if($row['status']=="pending"){
                                     ?>
                                         <tr>
+
                                             <td>
-                                                <?php echo $row['title']?>
+                                                <img src="<?php echo $row['image'] ?>" height="50px" width="50px"
+                                                    alt="No Image Inserted" alt="No Image Inserted" id="advimage" name="advimage"
+                                                    onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                             </td>
                                             <td>
-                                                <?php echo $row['type']?>
+                                                
+                                                    <?php echo $row['title']?>
+                                                
                                             </td>
                                             <td>
-                                                <?php echo $row['remain_Views']?>
+                                            
+                                                    <?php echo $row['type']?>
+                                                
                                             </td>
                                             <td>
-                                                <?php
+                                            
+                                                    <?php echo $row['remain_Views']?>
+                                                
+                                            </td>
+
+                                            <td>
+                                        
+                                                    <?php echo $row['category']?>
+                                                
+                                            </td>
+
+                                            <td>
+                                                
+                                                    <?php
                                                     if($row['status'] == "ongoing"){
                                                         ?>
-                                                <div class="text-center"
-                                                    style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo $row['status']?></p>
-                                                </div>
-                                                <?php } 
+                                                    <div class="text-center"
+                                                        style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                        <p class="p-1"><?php echo $row['status']?></p>
+                                                    </div>
+                                                    <?php } 
                                                     else if ($row['status'] == "pending")
                                                      {?>
-                                                <div class="text-center"
-                                                    style="background-color: #c9c936; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo $row['status']?></p>
-                                                </div>
-                                                <?php
+                                                    <div class="text-center"
+                                                        style="background-color: #c9c936; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                        <p class="p-1"><?php echo $row['status']?></p>
+                                                    </div>
+                                                    <?php
                                                     }
                                                     else{?>
-                                                <div class="text-center"
-                                                    style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo $row['status']?></p>
-                                                </div>
-                                                <?php }?>
+                                                    <div class="text-center"
+                                                        style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                        <p class="p-1"><?php echo $row['status']?></p>
+                                                    </div>
+                                                    <?php }?>
+                                                
                                             </td>
                                             <td>
-                                                <b> <?php 
+                                                
+                                                    <?php 
                                                 if($row['approve']==true){
                                                     ?>
                                                     <div class="text-center"
@@ -138,7 +174,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                     <?php }
 
                                                         ?>
-                                                </b>
+                                                
                                             </td>
                                             <td>
                                                 <?php 
@@ -158,10 +194,12 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                             <td>
                                                 <form method="POST" action="./advertiser_pending_Orders.php">
                                                     <!-- Create a form for deletion -->
-                                                    <input type="hidden" name="pub_o_id"
-                                                        value="">
+                                                    <input type="hidden" name="advid" id="advid"
+                                                        value="<?php echo  $row['_id']?>">
+                                                        
+                                                        
                                                     <button type="submit" class="btn btn-success" name="btnapprove"
-                                                        value=""
+                                                        value="<?php echo  $row['_id']?>"
                                                         onclick="return confirm('Are you sure , you want to Approve this Advertise?')">
                                                         <i class="fa-solid fa-check"></i>
                                                         <!-- <i class="bi bi-check2"></i> -->
@@ -171,15 +209,14 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                             <td>
                                                 <form method="POST" action="./advertiser_pending_Orders.php">
                                                     <!-- Create a form for deletion -->
-                                                    <input type="hidden" name="Advertiser_id" value="">
-                                                    <button type="submit" class="btn btn-secondary" name="delete"
+                                                    <input type="hidden" name="advredirect" id="advredirect"
+                                                        value="<?php echo  $row['redirect']?>">
+                                                    <button type="submit" class="btn btn-secondary" name="btndelete"
+                                                    value="<?php echo  $row['_id']?>"
                                                         onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
                                                             class="far fa-trash-alt" aria-hidden="true"></i></button>
                                                 </form>
                                             </td>
-
-
-
 
 
                                         </tr>

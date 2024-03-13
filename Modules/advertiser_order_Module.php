@@ -35,22 +35,17 @@ function Pending_Order($con){
     return $stmt_result;
 }
 
-function Pending_to_Approve($con,$id){
+function Pending_to_Approve($id){
 
-    $sql="update advertiser_order set order_status = 'confirm' where adv_order_id= '$id'";
-     
-    $stmt=$con->prepare($sql);
-    // $stmt->execute();
-   
-    // echo "<script>alert('Advertise is Approved')</script>";
-    if($stmt->execute())
-    {
-        echo "<script>alert('Advertise is Approved')</script>";
-    }
+    $param=["id"=>$id,"status"=>"ongoing"];
+    $response=UpdateAdvertiseAPI('https://admanager-s9eo.onrender.com/advertise',$param);
 
+    $data=json_decode($response);
+    print_r($data);
+    $lastdata=print_r($param);
+    echo $lastdata;
     
 }
-
 function delete_order($con,$id){
 
     $sql="delete from advertiser_order where adv_order_id='$id'";

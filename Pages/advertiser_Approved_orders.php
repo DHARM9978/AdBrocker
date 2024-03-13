@@ -68,6 +68,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                 <table id="example" class="table table-striped data-table" style="width: 100%">
                                     <thead class="text-center">
                                         <tr>
+                                            <th>Ad Image</th>
                                             <th>Name</th>
                                             <th>Type</th>
                                             <th>Ramaine Views</th>
@@ -83,6 +84,11 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                         if($row['status']=="ongoing"){
                                     ?>
                                         <tr>
+                                        <td>
+                                            <img src="<?php echo $row['image'] ?>" height="50px"
+                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+                                            </td>
                                             <td>
                                                 <?php echo $row['title']?>
                                             </td>

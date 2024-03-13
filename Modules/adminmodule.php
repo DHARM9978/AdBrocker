@@ -31,48 +31,23 @@ function Get_Admin($adm_email, $adm_password)
         // echo "<script>alert('$response');</script>";
         echo $response;
     }
-
-
-    // $sql = "select * from admin_table where adm_email='$adm_email'";
-    // $stmt = $con->prepare($sql);
-    // $stmt->execute();
-
-
-    // $stmt_result = $stmt->get_result();
-
-    // if ($stmt_result->num_rows > 0) {
-    //     $data = $stmt_result->fetch_assoc();
-        
-
-    //     if ($data['adm_password'] === $adm_password) {
-    //         $_SESSION["is_loggedin"] = true;
-    //         $_SESSION["adm_email"] = $data['adm_email'];
-    //         $_SESSION["admin_name"] = $data['adm_name'];
-    //         header('Location:/AdBroker_AdminPanel/Pages/ab-dashboard.php');
-    //     } else {
-    //         echo "<script>alert('Invailed Password');</script>";
-    //     }
-    // } else {
-        // echo "<script>alert('Invailed Email or Password');</script>";
-    // }
     
 }
 
-function Admin_Data(){
 
-}
+function Add_New_Admin($adm_name, $adm_email, $adm_contact, $adm_role, $password){
 
-function Add_New_Admin($con, $adm_id, $adm_name, $adm_email, $adm_contact, $adm_role, $password)
-{
-    $sql = "insert into admin_table(adm_id,adm_name,adm_email,adm_contact,adm_role,adm_password) values('$adm_id','$adm_name','$adm_email','$adm_contact','$adm_role','$password');";
-    $stmt = $con->prepare($sql);
-    $stmt->execute();
+    $param=["name"=>$adm_name,"email"=>$adm_email,"contactNo"=>$adm_contact,"role"=>$adm_role,"password"=>$password];
+    $response=AddAdmin('https://admanager-s9eo.onrender.com/user/signup',$param);
 
-    if ($stmt != "") {
-        echo "<script>alert('Admin Added Successfully , You can see new Admin in Admin Details Page');</script>";
-    } else {
-        echo "<script>alert('Something Went Wrong');</script>";
-    }
+
+
+    $mydata = json_decode($response, true);
+    print_r($mydata);
+        $lastdata=print_r($param);
+    echo $lastdata;
+ 
+  
 }
 
 function Remove_Admin($con, $adm_id)
@@ -95,7 +70,7 @@ function Perticular_Admin($con,$email){
 
     return $stmt_result;
 }
-
++
 function Change_Password($con,$id,$currentpassword,$oldpassword,$newpassword){
 
     if($currentpassword==$oldpassword){
@@ -110,5 +85,3 @@ function Change_Password($con,$id,$currentpassword,$oldpassword,$newpassword){
         echo "<script>alert('Your Current Password is Wrong.');</script>";
     }
 }
-
-
