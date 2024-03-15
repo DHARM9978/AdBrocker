@@ -1,14 +1,4 @@
 <?php
-function Get_All_Admins($con)
-{
-    $sql = "select * from admin_table where is_deleted=0";
-    $stmt = $con->prepare($sql);
-    $stmt->execute();
-
-    $stmt_result = $stmt->get_result();
-
-    return $stmt_result;
-}
 
 function Get_Admin($adm_email, $adm_password)
 {
@@ -29,7 +19,7 @@ function Get_Admin($adm_email, $adm_password)
         
     }else{
         // echo "<script>alert('$response');</script>";
-        echo $response;
+        echo "<script>alert('$response')</script>";
     }
     
 }
@@ -43,45 +33,10 @@ function Add_New_Admin($adm_name, $adm_email, $adm_contact, $adm_role, $password
 
 
     $mydata = json_decode($response, true);
-    print_r($mydata);
-        $lastdata=print_r($param);
-    echo $lastdata;
  
+    echo "<script>alert('$mydata')</script>";
   
 }
 
-function Remove_Admin($con, $adm_id)
-{
-    // $sql = "delete from admin_table where adm_id='$adm_id'";
-    $sql="update admin_table set is_deleted=1 where adm_id='$adm_id'";
 
-    $stmt = $con->prepare($sql);
-    $stmt->execute();
-}
-
-function Perticular_Admin($con,$email){
-    $sql="select * from admin_table where adm_email='$email'";
-
-    
-    $stmt = $con->prepare($sql);
-    $stmt->execute();
-
-    $stmt_result = $stmt->get_result();
-
-    return $stmt_result;
-}
-+
-function Change_Password($con,$id,$currentpassword,$oldpassword,$newpassword){
-
-    if($currentpassword==$oldpassword){
-
-        $sql="update admin_table set adm_password='$newpassword' where adm_id='$id'";
-        $stmt = $con->prepare($sql);
-        $stmt->execute();
-        echo "<script>alert('Your Password is changed Successfully.');</script>";
-        // header("Location:/AdBroker_AdminPanel/admin-login.php");
-    }
-    else{
-        echo "<script>alert('Your Current Password is Wrong.');</script>";
-    }
-}
+?>

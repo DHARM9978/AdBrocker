@@ -54,7 +54,7 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                 <div class="text-center mt-2 mb-3">
                     <h2>All Publisher</h2>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <form action="./add_publisher.php">
                         <div class="d-flex justify-content-end mb-3 me-2 text-center">
                             <button type="submit" name="add_admin_btn" class="btn" style="
@@ -65,7 +65,7 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                 Publishers</button>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <div class="my-3">
                     <div class="col-md-12 mb-3 w-100">
                         <div class="card">
@@ -77,11 +77,15 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                     <table id="example" class="table table-striped data-table" style="width: 100%">
                                         <thead class="text-center">
                                             <tr>
+                                                <th>Profile Pic</th>
                                                 <th>Name</th>
                                                 <th>Email-id</th>
                                                 <th>Contact</th>
+                                                <th>Plateform Name</th>
+                                                <th>Monthly Traffic</th>
+                                                <th>Plateform Url</th>
                                                 <th>Status</th>
-                                                <th>Remove Publisher</th>
+                                                <!-- <th>Remove Publisher</th> -->
 
 
                                             </tr>
@@ -92,6 +96,11 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                     ?>
                                             <tr>
                                                 <td>
+                                                <img src="<?php echo $row['profile_pic'] ?>" height="50px"
+                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+                                     </td>
+                                                <td>
                                                     <?php echo $row['name'] ?>
                                                 </td>
                                                 <td>
@@ -100,6 +109,17 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                                 <td>
                                                     <?php echo $row['contact'] ?>
                                                 </td>
+                                                <td>
+                                                    <?php echo $row['platform_name'] ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['monthly_traffic'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $row['platform_url'] ?>
+                                                </td>
+                                                
                                                 <td>
                                                     <?php
                                                     if( $row['user_status_active'] == true){
@@ -120,17 +140,7 @@ $Data=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
                                                 ?>
 
                                                 </td>
-                                                <td>
-                                                <form method="POST" action="./publisher_details.php">
-                                                        <!-- Create a form for deletion -->
-                                                        <input type="hidden" name="Publisher_id"
-                                                            value="">
-                                                        <button type="submit" class="btn btn-secondary" name="delete"
-                                                            onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
-                                                                class="far fa-trash-alt"
-                                                                aria-hidden="true"></i></button>
-                                                    </form>
-                                                </td>
+                                               
 
 
                                             </tr>

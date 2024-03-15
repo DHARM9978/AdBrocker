@@ -22,6 +22,8 @@ $response=json_decode($response_json, true);
 return $response;
 }
 
+
+
 function UpdateAdvertiseAPI($url,$data){
 
  // Convert data to JSON format

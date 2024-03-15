@@ -123,7 +123,8 @@
                 <li>
                     <a href="advertiser_all_orders.php">
                         <div class="parent-icon">
-                            <ion-icon name="server-outline"></ion-icon>
+                            <!-- <ion-icon name="server-outline"></ion-icon> -->
+                            <i class="fa-solid fa-image"></i>
                         </div>
                         <div class="menu-title">Total Orders</div>
                     </a>
@@ -221,7 +222,7 @@
                 <!-- <hr> -->
                 <li class="menu-label">Profile</li>
                 <li>
-                    <a href="./Profile.php">
+                    <a href="./Profile2.php">
                         <div class="parent-icon">
                             <i class="fa-solid fa-id-badge"></i>
                         </div>
@@ -306,7 +307,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="Profile.php">
+                                    <a class="dropdown-item" href="Profile2.php">
                                         <div class="d-flex align-items-center">
                                             <div class="">
                                                 <ion-icon name="person-outline"></ion-icon>

@@ -1,60 +1,34 @@
 <?php
 
-function Total_Orders($con){
-    $sql="select * from advertiser_order";
-    $stmt=$con->prepare($sql);
-    $stmt->execute();
-
-    $stmt_result=$stmt->get_result();
-
-    return $stmt_result;
-
-}
-
-
-function Approved_Order($con){
-
-    $sql="select * from advertiser_order where order_status='confirm'";
-    $stmt=$con->prepare($sql);
-    $stmt->execute();
-
-    $stmt_result=$stmt->get_result();
-
-    return $stmt_result;
-
-}
-
-function Pending_Order($con){
-    
-    $sql="select * from advertiser_order where order_status='upcoming'";
-    $stmt=$con->prepare($sql);
-    $stmt->execute();
-
-    $stmt_result=$stmt->get_result();
-
-    return $stmt_result;
-}
 
 function Pending_to_Approve($id){
 
-    $param=["id"=>$id,"status"=>"ongoing"];
-    $response=UpdateAdvertiseAPI('https://admanager-s9eo.onrender.com/advertise',$param);
+    $param=["_id"=>$id,"status"=>"ongoing"];
+    $response=UpdateAdvertiseAPI('https://admanager-s9eo.onrender.com/advertise/state',$param);
 
-    $data=json_decode($response);
-    print_r($data);
-    $lastdata=print_r($param);
-    echo $lastdata;
+if($response===false){
+    echo "<script>alert('Data Can't be Updated');</script>";
+}else{
+    echo "<script>alert('Status updated Successfully')</script>";
+    header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+}
     
 }
-function delete_order($con,$id){
 
-    $sql="delete from advertiser_order where adv_order_id='$id'";
-    $stmt=$con->prepare($sql);
-    $stmt->execute();
+function Delete_Order($id){ 
 
-    // if($stmt->execute()){
-    //     echo "<script>alert("Order Deleted Successfully");</script>";
-    // }
+    $param=["_id"=>$id,"status"=>"history"];
+    $response=UpdateAdvertiseAPI('https://admanager-s9eo.onrender.com/advertise/state',$param);
+
+    
+
+    if($response===false){
+        echo "<script>alert('Data Can't be Updated');</script>";
+    }else{
+        echo "<script>alert('Status updated Successfully')</script>";
+        header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+    }
+
 }
 
 

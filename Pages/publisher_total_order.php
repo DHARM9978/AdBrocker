@@ -6,11 +6,18 @@ if ($_SESSION["is_loggedin"] == false) {
 
 
 require './base.php';
-require '../Modules/publisher_order_module.php';
-require '../config.php';
+require '../Modules/PublisherAPI.php';
+// require '../Modules/publisher_order_module.php';
+// require '../config.php';
 
-$con = Db_Connection();
-$All_Publisher_Order=All_Publisher_Order($con);
+// $con = Db_Connection();
+// $All_Publisher_Order=All_Publisher_Order($con);
+
+$url="https://admanager-s9eo.onrender.com/advertise/rand";
+
+$data=totalAdPublisherAPI($url);
+$finaldata=json_encode($data);
+echo "<script>alert('$finaldata')</script>";
 
 ?>
 
@@ -86,11 +93,12 @@ $All_Publisher_Order=All_Publisher_Order($con);
                                         </thead>
                                         <tbody class="text-center">
                                             <?php
-                                    while ($row = $All_Publisher_Order->fetch_assoc()) {
+                                //    foreach($data as $row)
+                                {
                                     ?>
                                             <tr>
                                                 <th scope="row">
-                                                    <?php echo $row["pub_order_id"]; ?>
+                                                    <?php echo $row["name"]; ?>
                                                 </th>
                                                 <td>
                                                     <?php echo $row["pub_order_id"]; ?>

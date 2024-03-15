@@ -8,7 +8,19 @@ require 'base.php';
 require '../Modules/AdminAPI.php';
 
 $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
-$TotalAdmin= count($Data);
+// $TotalAdmin= count($Data);
+
+
+if(isset($_REQUEST['btndelete'])){
+
+$id=$_REQUEST['Admin_id'];
+
+$data=["id"=>$id];
+
+deleteAdmin("https://admanager-s9eo.onrender.com/user",$data);
+
+}
+
 
 ?>
 
@@ -135,12 +147,13 @@ $TotalAdmin= count($Data);
                                                     ?>
                                                 </td>
                                                 <td>
-                                                <form method="POST" action="./admin_details.php">
+                                                    <form method="POST" action="./admin_details.php">
                                                         <!-- Create a form for deletion -->
-                                                        <input type="hidden" name="Admin_id"
-                                                            value="">
-                                                        <button type="submit" class="btn btn-secondary" name="delete"
-                                                            onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
+                                                        <input type="hidden" name="Admin_id" id="Admin_id"
+                                                            value="<?php echo $row['_id'] ?>">
+                                                        <button type="submit" class="btn btn-secondary" name="btndelete"
+                                                            id="btndelete" value="<?php echo $row['_id'] ?>"
+                                                            onclick="return confirm('Are you sure , you want to Remove this Admin?')"><i
                                                                 class="far fa-trash-alt"
                                                                 aria-hidden="true"></i></button>
                                                     </form>

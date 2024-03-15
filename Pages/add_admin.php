@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adm_name = trim($_POST["adm_name"]);
     $adm_email = trim($_POST["adm_email"]);
     $adm_contact = trim($_POST["adm_contact"]);
-    $adm_role = trim($_POST["adm_role"]);
+   
+    $adm_role = "Admin";
     $adm_password = trim($_POST["adm_password"]);
 
   
@@ -118,14 +119,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span id="adm_contact_error"
                                     style="color: red; text-align: center; font-weight: 600;"></span>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Admin Role</label>
-                                <select name="adm_role" class="form-select form-select-md mb-3" require>
+                            <!-- <div class="mb-3"> -->
+                                <!-- <label class="form-label">Admin Role</label> -->
+                                <!-- <select name="adm_role" class="form-select form-select-md mb-3" require> -->
                                     <!-- <option value="default" selected>Select Admin Role</option > -->
-                                    <option value="main">Main Admin</option>
-                                    <option value="Approving Orders" selected>Approving Orders Admin</option>
-                                </select>
-                            </div>
+                                    <!-- <option value="main">Main Admin</option> -->
+                                    <!-- <option value="Approving Orders" selected>Approving Orders Admin</option> -->
+                                <!-- </select> -->
+                            <!-- </div> -->
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
                                 <input type="password" class="form-control" id="adm_password" name="adm_password"

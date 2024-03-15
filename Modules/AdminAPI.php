@@ -1,5 +1,7 @@
 <?php
 
+
+
 function totalAdminAPI($url)
 {
 
@@ -44,12 +46,57 @@ function AddAdmin($url, $data)
     
     // Check for cURL errors
     if (curl_errno($ch)) {
-        echo 'Curl error: ' . curl_error($ch);
+        $error= 'Curl error: ' . curl_error($ch);
+        echo "<script>alert('$error')</script>";
     }
 
     
-    // $decoded =  json_encode($response, true); 
-    return $response;
+    $decoded =  json_encode($response, true); 
+    // return $response;
+    return $decoded;
+}
+
+
+
+
+function deleteAdmin($url,$data){
+
+// Convert data to JSON format
+$jsonData = json_encode($data);
+
+// Initialize cURL session
+$curl = curl_init($url);
+
+// Set the request method to DELETE
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
+
+// Set the Content-Type header to application/json
+curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+// Set the JSON data to be sent
+curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonData);
+
+// Receive the response as a string
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+// Execute the request
+$response = curl_exec($curl);
+
+
+echo "<script>console.log($response)</script>";
+// Check for errors
+if ($response === false) {
+    // echo 'Error: ' . curl_error($curl);
+    echo "<script>alert('Data can't be deleted');</script>";
+} else {
+    echo "<script>alert('Data Deleted Successfully')</script>";
+    }
+
+
+
+curl_close($curl);
+
+
 }
 
 

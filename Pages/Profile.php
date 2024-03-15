@@ -53,8 +53,7 @@ if(isset($_REQUEST['btnupdateimage'])){
 
 
 
-
-"|dexdrfegxxxxxxxxFDG<div class="page-content-wrapper">
+<div class="page-content-wrapper">
     <!-- start page content-->
     <div class="page-content">
 

@@ -57,7 +57,7 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                 <div class="text-center mt-2 mb-3">
                     <h2>All Advertisers</h2>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <form action="add_advertiser.php">
                         <div class="d-flex justify-content-end mb-3 me-2 text-center">
                             <button type="submit" name="add_admin_btn" class="btn" style="
@@ -68,7 +68,7 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                     Advertisers</button>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <div class="my-3">
                     <div class="col-md-12 mb-3 w-100">
                         <div class="card">
@@ -89,7 +89,7 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                                 <th>User Status</th>
                                                 <th>Brand Adress</th>
                                                 <th>Brand Catagory</th>
-                                                <th>Remove Advertiser</th>
+                                                <!-- <th>Remove Advertiser</th> -->
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
@@ -143,17 +143,7 @@ $Data=totalAdvertiserAPI("https://admanager-s9eo.onrender.com/fire/advertisers")
                                                 <td>
                                                     <?php echo $row['brand_category'] ?>
                                                 </td>
-                                                <td>
-                                                <form method="POST" action="./advertiser_details.php">
-                                                        <!-- Create a form for deletion -->
-                                                        <input type="hidden" name="Advertiser_id"
-                                                            value="">
-                                                        <button type="submit" class="btn btn-secondary" name="delete"
-                                                            onclick="return confirm('Are you sure , you want to Remove this Advertiser?')"><i
-                                                                class="far fa-trash-alt"
-                                                                aria-hidden="true"></i></button>
-                                                    </form>
-                                                </td>
+                                               
 
                                             </tr>
                                             <?php } ?>
