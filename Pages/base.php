@@ -167,7 +167,7 @@
                 </li>
 
                 <hr>
-                <li class="menu-label">Publisher</li>
+                <!-- <li class="menu-label">Publisher</li>
 
                 <li>
                     <a href="publisher_total_order.php">
@@ -198,8 +198,8 @@
                 </li>
 
 
-                </li>
-                <hr>
+                </li> -->
+                <!-- <hr> -->
                 <!-- <li class="menu-label">Advertise</li>
         <li>
           <a href="ads_page.php">
@@ -222,7 +222,7 @@
                 <!-- <hr> -->
                 <li class="menu-label">Profile</li>
                 <li>
-                    <a href="./Profile2.php">
+                    <a href="./Profile.php">
                         <div class="parent-icon">
                             <i class="fa-solid fa-id-badge"></i>
                         </div>
@@ -230,7 +230,7 @@
                     </a>
 
                 </li>
-                <li>
+                <!-- <li>
                     <a href="./change_password.php">
                         <div class="parent-icon">
                             <i class="fa-solid fa-unlock-keyhole"></i>
@@ -238,7 +238,7 @@
                         <div class="menu-title">Change Password</div>
                     </a>
 
-                </li>
+                </li> -->
                 <li>
                     <a href="../logout.php">
                         <div class="parent-icon">
@@ -285,16 +285,21 @@
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                                 data-bs-toggle="dropdown">
                                 <div class="user-setting">
-                                    <img src="../ProfileImages/<?php echo $result1['adm_image']?>" class="user-img"
-                                        alt="">
+                                    
+                                        <img src="<?php echo $row['image'] ?>" height="50px" class="user-img"
+                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="javascript:;">
                                         <div class="d-flex flex-row align-items-center gap-2">
-                                            <img src="../ProfileImages/<?php echo $result1['adm_image']?>" alt=""
-                                                class="rounded-circle" width="54" height="54">
+                                        
+                                                <img src="<?php echo $row['image'] ?>" height="50px" class="rounded-circle"
+                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+                                                
                                             <div class="">
                                                 <h6 class="mb-0 dropdown-user-name">
                                                     <?php echo ucwords($_SESSION['admin_name']) ?></h6>
@@ -307,7 +312,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="Profile2.php">
+                                    <a class="dropdown-item" href="Profile.php">
                                         <div class="d-flex align-items-center">
                                             <div class="">
                                                 <ion-icon name="person-outline"></ion-icon>

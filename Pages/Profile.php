@@ -4,50 +4,24 @@ if ($_SESSION["is_loggedin"] == false) {
 }
 
 require 'base.php';
-require '../config.php';
 require '../Modules/adminmodule.php';
-
-$con = Db_Connection();
-$admemail=$_SESSION['adm_email'];
-$Admindata=Perticular_Admin($con,$admemail);
-$finaladmindata=$Admindata->fetch_assoc();
+require '../Modules/adminAPI.php';
 
 
+$email=$_SESSION['adm_email'];
+
+$data2=perticular_admin($email);
 
 
-if(isset($_REQUEST['btnupdateimage'])){
-    if($_FILES['chooseimage']['error']===4){
-        echo "<script>alert('Image Not Found');</script>";
-    }
-    else{
-        $filename=$_FILES['chooseimage']['name'];
-        $filesize=$_FILES['chooseimage']['size'];
-        $tempname=$_FILES['chooseimage']['tmp_name'];
+$data = json_decode($data2, true);
 
-        $validimageextention=['jpg','jpeg','png'];
-        $imageextention=explode('.',$filename);
-        $imageextention=strtolower(end($imageextention));
+// $name=$data['name'];
+// echo "<script>console.log('$name')</script>";
 
-        if(!in_array($imageextention,$validimageextention)){
-            echo "<script>alert('Invalid Image Extention');</script>";
-        }
-        else if($filesize>10000000){
-            echo "<script>alert('Image Is Too Large');</script>";
-        }
-        else{
-            $newimagename=uniqid();
-            $newimagename=$newimagename.'.'.$imageextention;
-            $admemail=$_SESSION['adm_email'];
 
-            move_uploaded_file($tempname,'../ProfileImages/'.$newimagename);
-            $query="update admin_table set adm_image = '$newimagename' where adm_email='$admemail'";
-            mysqli_query($con,$query);
-            echo "<script> alert('Image Uploaded Successfully');</script>";
-        }
-    }
-}
+
+
 ?>
-
 <!-- start page content wrapper-->
 
 
@@ -74,6 +48,8 @@ if(isset($_REQUEST['btnupdateimage'])){
             <i class="fa-solid fa-chevron-right" style=""></i>
             &nbsp;&nbsp;
             &nbsp;&nbsp;
+
+            
             <div class="breadcrumb-title active pe-3" style="color:#0000FF;border:none;font-size:25px">Profile</div>
 
 
@@ -82,7 +58,7 @@ if(isset($_REQUEST['btnupdateimage'])){
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-primary"> <img src="../assets/images/logo-icon-2.png"
                             class="logo-icon" alt="logo icon" style="height: 20px; width: 20px; color:#923EB9"> Hello
-                        <?php echo ucwords($_SESSION['admin_name'])?> </button>
+                         </button>
                     <button type="button"
                         class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
@@ -119,23 +95,25 @@ if(isset($_REQUEST['btnupdateimage'])){
                             </form> -->
 
 
-                            <form action="Profile.php" method="post" enctype="multipart/form-data" autocomplete="off">
-                                <label for="chooseimage">
-                                    <!-- <img src="../assets/images/Default_Image.png"> -->
-                                    <img src="../ProfileImages/<?php echo $finaladmindata['adm_image'] ?>"
-                                        style="height:150px;width:150px">
+                            <!-- <form action="Profile.php" method="post" enctype="multipart/form-data" autocomplete="off"> -->
+                               
+                            <label for="chooseimage">
+                            <img src="<?php echo $row['image'] ?>" height="50px"
+                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                 </label>
 
 
-                                <input type="file" id="chooseimage" name="chooseimage" accept=".jpg, .jpeg, .png"
-                                    value="" style="display:none">
+                                <!-- <input type="file" id="chooseimage" name="chooseimage" accept=".jpg, .jpeg, .png"
+                                    value="" style="display:none"> -->
                                 <br>
                                 <br>
 
+                                <a href="./Profile2.php">
                                 <button class="btn btn-success" type="submit" id="btnupdateimage" name="btnupdateimage"
-                                    style="background-color:#3c096c;margin-left:10px;margin-top:20px">Update
-                                    Image</button>
-                            </form>
+                                    style="background-color:#3c096c;margin-left:10px;margin-top:20px">Edit Profile
+                                </button></a>
+                            <!-- </form> -->
 
 
                         </div>
@@ -161,7 +139,7 @@ if(isset($_REQUEST['btnupdateimage'])){
                             <div class="">
                                 <!-- <button class="btn" style="background-color:#923eb9; color:white" type="submuit" name="submit">Change Image</button>
                                 <input type="file" name="image" id="image" accept=".jeg,.jpeg,.png," value="" style="display:none" onchange=getImage(this.value);> -->
-                                <h3 class="mb-2"><?php echo ucwords($_SESSION['admin_name']) ?></h3>
+                                <h3 class="mb-2"><?php echo $data['name'] ?></h3>
                                 <!-- ucwords()  is used to change first letter in capital -->
                                 <p class="mb-1">Engineer at BB Agency Industry</p>
                                 <p>New York, United States</p>

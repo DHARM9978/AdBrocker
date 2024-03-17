@@ -4,25 +4,22 @@ if ($_SESSION["is_loggedin"] == false) {
   }
 
     require 'base.php';
-    require '../config.php';
+    require '../Modules/SubscriptionAPI.php';
     require '../Modules/subscription_module.php';
-    require '../functions.php';
+    
 
     
-$con = Db_Connection();
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $subscription_id = Subscription_Unique_id($con);
+$Name=$_REQUEST['Plan_Name'];
+$Price=$_REQUEST['price'];
+$Views=$_REQUEST['views'];
+$Type=$_REQUEST['Type'];
 
-    $price = trim($_POST["price"]);
-    $duration = trim($_POST["duration"]);
-    $no_of_days = trim($_POST["no_of_days"]);
-    $traffic_strength = trim($_POST["traffic_strength"]);
+Add_New_Subscription($Name,$Price,$Views,$Type);
 
-    Add_New_Subscription($con, $subscription_id, $price, $duration, $no_of_days, $traffic_strength);
 }
+
 
 ?>
 
@@ -98,31 +95,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="container">
                         <form action="./add_subscription.php" method="POST">
                             <div class="mb-3">
-                                <label class="form-label">Price</label>
-                                <input type="number" class="form-control" name="price" placeholder="Price:-"
-                                    autocomplete="off" style="color: #0F1035;" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Duration</label>
-                                <input type="number" class="form-control" name="duration"
-                                    placeholder="Duration:- ex:- 1 month" autocomplete="off" style="color: #0F1035;"
+                                <label class="form-label">Plan Name</label>
+                                <input type="text" class="form-control" name="Plan_Name" id="Plan_Name"
+                                    placeholder="Enter Plan Name ex:-xyz" autocomplete="off" style="color: #0F1035;"
                                     required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">No of Days</label>
-                                <input type="text" class="form-control" name="no_of_days"
-                                    placeholder="No of Days:- ex:- if one month then enter 28" autocomplete="off"
-                                    pattern="[0-9]*" style="color: #0F1035;" maxlength="10" required>
+                                <label class="form-label">Price</label>
+                                <input type="number" class="form-control" name="price" id="price" placeholder="Price:-"
+                                    autocomplete="off" style="color: #0F1035;" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Traffic Strength</label>
-                                <input type="text" class="form-control" name="traffic_strength"
-                                    placeholder="Traffic Strength ex:- 10k-50k" autocomplete="off"
-                                    style="color: #0F1035;" required>
+                                <label class="form-label">Total Views</label>
+                                <input type="number" class="form-control" name="views" id="views"
+                                    placeholder="Enter Total Views that we provide" autocomplete="off" style="color: #0F1035;"
+                                    required>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Type</label>
+                                <input type="text" class="form-control" name="Type" id="Type"
+                                    placeholder="Either Banner or Interstitial" autocomplete="off"
+                                    style="color: #0F1035;" maxlength="10" required>
+                            </div>
+
                     </div>
                     <div class="d-flex justify-content-center mb-3 text-center">
-                        <button type="submit" name="add_new_subscription" class="btn" style="width: 50%;
+                        <button type="submit" name="add_new_subscription" id="add_new_subscription" class="btn" style="width: 50%;
                             background:#3c096c;
                             color: #edf2f3;
                             font-weight: 500;">

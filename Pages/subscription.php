@@ -5,17 +5,11 @@ if ($_SESSION["is_loggedin"] == false) {
 
 
 require 'base.php';
-require '../config.php';
-require '../Modules/subscription_module.php';
+require '../Modules/SubscriptionAPI.php';
+$url="https://admanager-s9eo.onrender.com/plans";
+$data=totalSubscription($url);
 
 
-$con = Db_Connection();
-$all_Subscriptions = Get_All_Subscriptions($con);
-
-if (isset($_REQUEST["subscription_id"])) {
-    Remove_Subscription($con, $_REQUEST["subscription_id"]);
-    $all_Subscriptions = Get_All_Subscriptions($con);
-}
 
 ?>
 <!-- Start of Subscription -->
@@ -85,45 +79,60 @@ if (isset($_REQUEST["subscription_id"])) {
 
                                         <thead class="text-center">
                                             <tr>
-                                                <th>Subscription Id</th>
+                                                <th>Name</th>
+                                                <th>Views</th>
                                                 <th>Price</th>
-                                                <th>Duration</th>
-                                                <th>No of days</th>
-                                                <th>Traffic Strength</th>
-                                                <th>Remove</th>
+                                                <th>Type</th>
+                                                <th>Status</th>
+                                                <th>Created Date</th>
+                                        
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
                                             <?php
-                                    while ($row = $all_Subscriptions->fetch_assoc()) {
+                                    foreach($data as $row) {
                                     ?>
                                             <tr>
                                                 <th scope="row">
-                                                    <?php echo $row["subscription_id"]; ?>
+                                                    <?php echo $row["name"]; ?>
                                                 </th>
+                                                <td>
+                                                    <?php echo $row["views"]; ?>
+                                                </td>
                                                 <td>
                                                     <?php echo $row["price"]; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row["duration"]; ?>
+                                                    <?php echo $row["type"]; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row["no_of_days"]; ?>
+                                                   <?php 
+                                                if($row['status']=="Active"){
+                                                    ?>
+                                                        <div class="text-center"
+                                                            style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                            <p class="p-1"><?php echo "Active"?></p>
+                                                        </div>
+                                                        <?php } 
+                                                    else { ?>
+                                                        <div class="text-center"
+                                                            style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                            <p class="p-1"><?php echo "Inactive"?></p>
+                                                        </div>
+                                                        <?php }
+
+                                                        ?>
+                                                    
                                                 </td>
                                                 <td>
-                                                    <?php echo $row["traffic_strength"]; ?>
-                                                </td>
-                                                <td>
-                                                    <form method="POST" action="./subscription.php">
-                                                        <!-- Create a form for deletion -->
-                                                        <input type="hidden" name="subscription_id"
-                                                            value="<?php echo $row['subscription_id']; ?>">
-                                                        <button type="submit" class="btn btn-secondary" name="delete"
-                                                            onclick="return confirm('Are you sure , you want to Remove this Subscription?')"><i
-                                                                class="far fa-trash-alt"
-                                                                aria-hidden="true"></i></button>
-                                                    </form>
-                                                </td>
+                                                <?php  
+                                                    $date= $row['createdAt'];
+                                                    $finaldate=date("d-m-Y", strtotime($date));
+                                                    echo $finaldate;
+                                                    
+
+                                                    ?>
+                                                    </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>

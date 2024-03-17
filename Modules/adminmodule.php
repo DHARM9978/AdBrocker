@@ -1,4 +1,5 @@
 <?php
+// require '../Modules/AdminAPI.php';
 
 function Get_Admin($adm_email, $adm_password)
 {
@@ -38,5 +39,25 @@ function Add_New_Admin($adm_name, $adm_email, $adm_contact, $adm_role, $password
   
 }
 
+function perticular_admin($email){
 
+$param=["email"=>$email];
+
+// echo "<script>console.log('$email')</script>";
+
+$response=Perticular_admin_API("https://admanager-s9eo.onrender.com/user/getby",$param);
+
+// echo "<script>console.log('jOJE HO nUMUNA')</script>";
+// echo "<script>console.log('$response');</script>";
+
+
+
+$mydata = json_decode($response, true);
+
+// echo "<script>alert('$response');</script>";
+ 
+
+return $mydata;
+
+}
 ?>
