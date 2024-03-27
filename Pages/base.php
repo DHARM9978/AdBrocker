@@ -167,27 +167,27 @@
                 </li>
 
                 <hr>
-                <!-- <li class="menu-label">Publisher</li>
+                <li class="menu-label">Payment</li>
 
                 <li>
-                    <a href="publisher_total_order.php">
+                    <a href="./AdvertiserTransaction.php">
                         <div class="parent-icon">
                             <ion-icon name="person-circle-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Total Orders</div>
+                        <div class="menu-title">Advertiser</div>
                     </a>
                 </li>
 
                 <li>
-                    <a href="publisher_approved_order.php">
+                    <a href="./PublisherTransaction.php">
                         <div class="parent-icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Approved Orders</div>
+                        <div class="menu-title">Publisher</div>
                     </a>
 
                 </li>
-                <li>
+                <!-- <li>
                     <a href="publisher_pending_order.php">
                         <div class="parent-icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
@@ -195,11 +195,11 @@
                         <div class="menu-title">Pending Orders</div>
                     </a>
 
-                </li>
-
-
                 </li> -->
-                <!-- <hr> -->
+
+
+                </li>
+                <hr>
                 <!-- <li class="menu-label">Advertise</li>
         <li>
           <a href="ads_page.php">
