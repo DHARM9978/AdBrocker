@@ -27,6 +27,20 @@ $AdData=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
 $TotalAd=count($AdData);
 
 
+
+$Data=totalAdminAPI("https://admanager-s9eo.onrender.com/transaction");
+// $data = json_decode($Data, true); // Decode JSON response into PHP array
+
+$labels = [];
+$values = [];
+
+foreach ($Data as $item) {
+    $labels[] = $item['type']; // Assuming your data has 'label' and 'value' fields
+    $values[] = $item['amount'];
+}
+
+
+
 ?>
 
 
@@ -165,8 +179,64 @@ $TotalAd=count($AdData);
         </a>
     </div>
     <!--end row-->
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
 </div>
 <!-- end page content-->
 </div>
 <!--end page content wrapper-->
 </div>
+
+
+<script>
+        // Render chart using Chart.js
+        // var ctx = document.getElementById('myChart').getContext('2d');
+        // var myChart = new Chart(ctx, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: <?php echo json_encode($labels); ?>,
+        //         datasets: [{
+        //             label: 'Data from MongoDB',
+        //             data: <?php echo json_encode($values); ?>,
+        //             backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        //             borderColor: 'rgba(255, 99, 132, 1)',
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true
+        //             }
+        //         }
+        //     }
+        // });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: <?php echo json_encode($labels); ?>,
+                datasets: [{
+                    label: 'Data from MongoDB',
+                    data: <?php echo json_encode($values); ?>,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
