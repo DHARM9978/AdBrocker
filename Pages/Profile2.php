@@ -16,6 +16,18 @@ $data = json_decode($data2, true);
 // echo "<script>console.log('$name')</script>";
 
 
+if(isset($_REQUEST['btnsavechange'])){
+
+$Name=$_REQUEST['txtname'];
+$Email=$_REQUEST['txtemail'];
+$Contact=$_REQUEST['txtcontact'];
+$About=$_REQUEST['Description'];
+$Image=$_REQUEST['image'];
+
+
+
+}
+
 
 ?>
 
@@ -79,7 +91,7 @@ $data = json_decode($data2, true);
                             <div class="row g-3">
                                 <div class="col-6">
                                     <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" value="<?php echo $data['name'] ?>">
+                                    <input type="text" class="form-control" id="txtname" name="txtname" value="<?php echo $data['name'] ?>">
                                 </div>
                                 <!-- <div class="col-6">
         <label class="form-label">Email address</label>
@@ -97,35 +109,36 @@ $data = json_decode($data2, true);
       </div> -->
                                 <div class="col-6">
                                     <label class="form-label">Contact NO</label>
-                                    <input type="text" class="form-control" value="<?php echo $data['contactNo'] ?>">
+                                    <input type="text" class="form-control" id="txtcontact" name="txtcontact" value="<?php echo $data['contactNo'] ?>">
                                 </div>
                             </div>
                             <br>
                             <div>
                                 <div class="col-6">
                                     <label class="form-label">Email address</label>
-                                    <input type="text" class="form-control" value="<?php echo $data['email'] ?>">
+                                    <input type="text" class="form-control" id="txtemail" name="txtemail" value="<?php echo $data['email'] ?>">
                                 </div>
                                 <!-- <div class="col-6">
-        <label class="form-label">Country</label>
-        <input type="text" class="form-control" value="">
-      </div>
-      <div class="col-6">
-        <label class="form-label">Pin Code</label>
-        <input type="text" class="form-control" value="">
-      </div>
-      <div class="col-6">
-        <label class="form-label">Last Name</label>
-        <input type="text" class="form-control" value="">
-      </div>
-      <div class="col-12">
-        <label class="form-label">About Me</label>
-        <textarea class="form-control" rows="4" cols="4" placeholder="Describe yourself..."></textarea>
-      </div> -->
+                                    <label class="form-label">Country</label>
+                                    <input type="text" class="form-control" value="">
+                                </div> -->
+                                <!-- <div class="col-6">
+                                    <label class="form-label">Pin Code</label>
+                                    <input type="text" class="form-control" value="">
+                                </div> -->
+                                <!-- <div class="col-6">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" value="">
+                                </div> -->
+                                <div class="col-12">
+                                    <label class="form-label">About Me</label>
+                                    <textarea class="form-control" rows="4" cols="4"
+                                        placeholder="Describe yourself..." name="Description" id="Description"></textarea>
+                                </div>
                             </div>
-                            <!-- <div class="text-start mt-3">
-                                <button type="button" class="btn btn-primary px-4">Save Changes</button>
-                            </div> -->
+                            <div class="text-start mt-3">
+                                <button type="button" class="btn btn-primary px-4" id="btnsavechange" name="btnsavechange">Save Changes</button>
+                            </div>
                     </div>
                     </form>
 

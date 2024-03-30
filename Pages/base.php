@@ -230,7 +230,7 @@
                     </a>
 
                 </li>
-                <!-- <li>
+                <li>
                     <a href="./change_password.php">
                         <div class="parent-icon">
                             <i class="fa-solid fa-unlock-keyhole"></i>
@@ -238,7 +238,7 @@
                         <div class="menu-title">Change Password</div>
                     </a>
 
-                </li> -->
+                </li>
                 <li>
                     <a href="../logout.php">
                         <div class="parent-icon">

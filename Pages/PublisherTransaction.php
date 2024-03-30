@@ -79,10 +79,11 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                                     <table id="example" class="table table-striped data-table" style="width: 100%">
                                         <thead class="text-center">
                                             <tr>
-                                                <th>Advertiser ID</th>
-                                                <th>Advertiser ID</th>
+                                                <th>Publisher ID</th>
+                                                <th>Transaction ID</th>
                                                 <th>Amount</th>
                                                 <th>Type</th>
+                                                <th>Transaction Date</th>
 
                                                 <!-- <th>Remove Advertiser</th> -->
                                             </tr>
@@ -96,16 +97,25 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
 
 
                                                 <td>
-                                                    <?php echo $row['advertisId']?>
+                                                    <?php echo $row['publisherId']?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['advertiserId']  ?>
+                                                    <?php echo $row['transactionId']  ?>
                                                 </td>
                                                 <td>
                                                     <?php  echo $row['amount'] ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row['type']  ?>
+                                                </td>
+                                                <td>
+                                                <?php  
+                                                    $date= $row['updatedAt'];
+                                                    $finaldate=date("d-m-Y", strtotime($date));
+                                                    echo $finaldate;
+                                                    
+
+                                                    ?>
                                                 </td>
 
                                             </tr>

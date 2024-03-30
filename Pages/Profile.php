@@ -74,7 +74,7 @@ $data = json_decode($data2, true);
         <!--end breadcrumb-->
 
         <div class="row">
-            <div class="col-12 col-lg-8 col-xl-9">
+            <div class="col-12 ">
                 <div class="card overflow-hidden radius-10">
                     <div class="profile-cover bg-dark position-relative mb-4">
                         <div class="user-profile-avatar shadow position-absolute top-50 start-0 translate-middle-x">
@@ -143,11 +143,11 @@ $data = json_decode($data2, true);
                                 <!-- ucwords()  is used to change first letter in capital -->
                                 <p class="mb-1">Engineer at BB Agency Industry</p>
                                 <p>New York, United States</p>
-                                <div class="">
+                                <!-- <div class="">
                                     <span class="badge rounded-pill bg-primary">UX Research</span>
                                     <span class="badge rounded-pill bg-primary">CX Strategy</span>
                                     <span class="badge rounded-pill bg-primary">Project Management</span>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -178,7 +178,7 @@ $data = json_decode($data2, true);
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-xl-3">
+            <!-- <div class="col-12 col-lg-4 col-xl-3">
                 <div class="card radius-10">
                     <div class="card-body">
                         <h5 class="mb-3">Location</h5>
@@ -244,7 +244,7 @@ $data = json_decode($data2, true);
                 </div>
 
             </div>
-        </div>
+        </div> -->
         <!--end row-->
 
 

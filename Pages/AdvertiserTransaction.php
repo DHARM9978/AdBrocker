@@ -83,6 +83,7 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                                                 <th>Advertiser ID</th>
                                                 <th>Amount</th>
                                                 <th>Type</th>
+                                                <th>Transaction Date</th>
 
                                                 <!-- <th>Remove Advertiser</th> -->
                                             </tr>
@@ -106,6 +107,15 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                                                 </td>
                                                 <td>
                                                     <?php echo $row['type']  ?>
+                                                </td>
+                                                <td>
+                                                    <?php  
+                                                    $date= $row['updatedAt'];
+                                                    $finaldate=date("d-m-Y", strtotime($date));
+                                                    echo $finaldate;
+                                                    
+
+                                                    ?>
                                                 </td>
 
                                             </tr>

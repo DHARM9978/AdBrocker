@@ -99,23 +99,30 @@ Add_New_Subscription($Name,$Price,$Views,$Type);
                                 <input type="text" class="form-control" name="Plan_Name" id="Plan_Name"
                                     placeholder="Enter Plan Name ex:-xyz" autocomplete="off" style="color: #0F1035;"
                                     required>
+                                <span name="sub_name" id="sub_name" style="color:red ; font-weight:600"></span>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Price</label>
                                 <input type="number" class="form-control" name="price" id="price" placeholder="Price:-"
                                     autocomplete="off" style="color: #0F1035;" required>
+                                <span name="sub_price" id="sub_price" style="color:red ; font-weight:600"></span>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Total Views</label>
                                 <input type="number" class="form-control" name="views" id="views"
-                                    placeholder="Enter Total Views that we provide" autocomplete="off" style="color: #0F1035;"
-                                    required>
+                                    placeholder="Enter Total Views that we provide" autocomplete="off"
+                                    style="color: #0F1035;" required>
+                                <span name="sub_views" id="sub_views" style="color:red ; font-weight:600"></span>
                             </div>
+                            
                             <div class="mb-3">
-                                <label class="form-label">Type</label>
-                                <input type="text" class="form-control" name="Type" id="Type"
-                                    placeholder="Either Banner or Interstitial" autocomplete="off"
-                                    style="color: #0F1035;" maxlength="10" required>
+                                <label class="form-label">Advertise Type</label>
+                                <select name="adm_role" class="form-select form-select-md mb-3" name="Type" id="Type" require>
+                                    <option disabled  selected>Select Ad Type</option>
+                                    <option value="Banner">Banner</option>
+                                    <option value="Approving Orders">Intrustial</option>
+                                </select>
+                                <span name="sub_type" id="sub_type" style="color:red ; font-weight:600"></span>
                             </div>
 
                     </div>
@@ -133,3 +140,83 @@ Add_New_Subscription($Name,$Price,$Views,$Type);
     </div>
 </div>
 </div>
+
+
+<script>
+$(document).ready(function() {
+
+    $("#Plan_Name").blur(function() {
+        $("#sub_name").hide();
+        validatesubname();
+    });
+
+    $("#price").blur(function() {
+        $("#sub_price").hide();
+        validateprice();
+    });
+
+    $("#views").blur(function() {
+        $("#sub_views").hide();
+        validateviews();
+    });
+
+    $("#Type").blur(function() {
+        $("#sub_type").hide();
+        validatetype();
+    });
+
+});
+
+function validatesubname() {
+    var name = $("#Plan_Name").val();
+
+    if (name == '') {
+        $("#sub_name").show();
+        $("#sub_name").html('Plan Name can not be empty');
+        return false;
+    } else {
+        $("#sub_name").blur();
+        return true;
+    }
+}
+
+function validatetype() {
+    var type = $("#Type").val();
+
+    if (type == '') {
+        $("#sub_type").show();
+        $("#sub_type").html('Plan Type can not be empty');
+        return false;
+    } else {
+        $("#sub_type").blur();
+        return true;
+    }
+}
+
+function validateprice() {
+    var price = $("#price").val();
+
+    if (price == '') {
+        $("#sub_price").show();
+        $("#sub_price").html('Plan Name can not be empty');
+        return false;
+    } else {
+        $("#sub_price").blur();
+        return true;
+    }
+}
+
+
+function validateviews() {
+    var views = $("#views").val();
+
+    if (views == '') {
+        $("#sub_views").show();
+        $("#sub_views").html('Plan Name can not be empty');
+        return false;
+    } else {
+        $("#sub_views").blur();
+        return true;
+    }
+}
+</script>

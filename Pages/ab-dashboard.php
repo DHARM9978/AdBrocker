@@ -38,11 +38,7 @@ foreach ($Data as $item) {
     $labels[] = $item['type']; // Assuming your data has 'label' and 'value' fields
     $values[] = $item['amount'];
 }
-
-
-
 ?>
-
 
 
 
@@ -186,6 +182,9 @@ foreach ($Data as $item) {
         <div class="col-md-6">
             <canvas id="myChart"></canvas>
         </div>
+        <div class="col-md-6">
+            <canvas id="myChart1"></canvas>
+        </div>
     </div>
 </div>
 <!-- end page content-->
@@ -240,3 +239,4 @@ foreach ($Data as $item) {
             }
         });
     </script>
+

@@ -71,6 +71,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                             <th>Ad Image</th>
                                             <th>Name</th>
                                             <th>Type</th>
+                                            <th>Catagory</th>
                                             <th>Ramaine Views</th>
                                             <th>Status </th>
                                             <th>Approve</th>
@@ -94,6 +95,9 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                             </td>
                                             <td>
                                                 <?php echo $row['type']?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['category']?>
                                             </td>
                                             <td>
                                                 <?php echo $row['remain_Views']?>

@@ -7,10 +7,12 @@ $response=AddSubscription('https://admanager-s9eo.onrender.com/plans',$param);
 
 
 $mydata = json_decode($response, true);  
+$Final = json_decode($mydata, true);  
+
+$error=$Final['error_message'];
 
 
-
-echo "<script>alert('$mydata')</script>";
+echo "<script>alert('$error')</script>";
 
 
 }
