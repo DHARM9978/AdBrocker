@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -152,10 +151,6 @@
                 </li>
 
 
-
-
-
-
                 <li>
                     <a href="advertiser_pending_Orders.php">
                         <div class="parent-icon">
@@ -165,6 +160,17 @@
                     </a>
 
                 </li>
+                <hr>
+                <li class="menu-label">Publisher</li>
+
+                <li>
+                    <a href="./publisher_app_data.php">
+                        <div class="parent-icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Publisher App Details</div>
+                    </a>
+</li>
 
                 <hr>
                 <li class="menu-label">Payment</li>
@@ -186,40 +192,14 @@
                         <div class="menu-title">Publisher</div>
                     </a>
 
-                </li>
-                <!-- <li>
-                    <a href="publisher_pending_order.php">
-                        <div class="parent-icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Pending Orders</div>
-                    </a>
 
-                </li> -->
+
 
 
                 </li>
+               
+
                 <hr>
-                <!-- <li class="menu-label">Advertise</li>
-        <li>
-          <a href="ads_page.php">
-            <div class="parent-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
-            </div>
-            <div class="menu-title">Total Ads</div>
-          </a>
-
-        </li> -->
-                <!-- <li>
-          <a href="#">
-            <div class="parent-icon">
-              <ion-icon name="map-outline"></ion-icon>
-            </div>
-            <div class="menu-title">Maps</div>
-          </a>
-
-        </li> -->
-                <!-- <hr> -->
                 <li class="menu-label">Profile</li>
                 <li>
                     <a href="./Profile.php">
@@ -285,21 +265,21 @@
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                                 data-bs-toggle="dropdown">
                                 <div class="user-setting">
-                                    
-                                        <img src="<?php echo $row['image'] ?>" height="50px" class="user-img"
-                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
-                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+
+                                    <img src="<?php echo $row['image'] ?>" height="50px" class="user-img" width="50px"
+                                        alt="No Image Inserted" alt="No Image Inserted"
+                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="javascript:;">
                                         <div class="d-flex flex-row align-items-center gap-2">
-                                        
-                                                <img src="<?php echo $row['image'] ?>" height="50px" class="rounded-circle"
-                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
-                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
-                                                
+
+                                            <img src="<?php echo $row['image'] ?>" height="50px" class="rounded-circle"
+                                                width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                                onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+
                                             <div class="">
                                                 <h6 class="mb-0 dropdown-user-name">
                                                     <?php echo ucwords($_SESSION['admin_name']) ?></h6>
@@ -321,66 +301,7 @@
                                         </div>
                                     </a>
                                 </li>
-                                <!-- <li>
-                  <a class="dropdown-item" href="javascript:;">
-                    <div class="d-flex align-items-center">
-                      <div class="">
-                        <ion-icon name="settings-outline"></ion-icon>
-                      </div>
-                      <div class="ms-3"><span>Setting</span></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="javascript:;">
-                    <div class="d-flex align-items-center">
-                      <div class="">
-                        <ion-icon name="speedometer-outline"></ion-icon>
-                      </div>
-                      <div class="ms-3"><span>Dashboard</span></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="javascript:;">
-                    <div class="d-flex align-items-center">
-                      <div class="">
-                        <ion-icon name="wallet-outline"></ion-icon>
-                      </div>
-                      <div class="ms-3"><span>Earnings</span></div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="javascript:;">
-                    <div class="d-flex align-items-center">
-                      <div class="">
-                        <ion-icon name="cloud-download-outline"></ion-icon>
-                      </div>
-                      <div class="ms-3"><span>Downloads</span></div>
-                    </div>
-                  </a>
-                </li> -->
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../logout.php">
-                                        <div class="d-flex align-items-center">
-                                            <div class="">
-                                                <ion-icon name="log-out-outline"></ion-icon>
-                                            </div>
-                                            <div class="ms-3"><span>Logout</span></div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
-
-                    </ul>
-
-                </div>
             </nav>
         </header>
         <!--end top header-->

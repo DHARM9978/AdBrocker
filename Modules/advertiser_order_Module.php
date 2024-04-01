@@ -3,7 +3,7 @@
 
 function Pending_to_Approve($id){
 
-    $param=["_id"=>$id,"status"=>"ongoing"];
+    $param=["_id"=>$id,"status"=>"ongoing","approve"=>"true"];
     $response=UpdateAdvertiseAPI('https://admanager-s9eo.onrender.com/advertise/state',$param);
 
 if($response===false){

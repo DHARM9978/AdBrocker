@@ -1,5 +1,11 @@
 <?php
 
+
+if ($_SESSION["is_loggedin"] == false) {
+    header("Location:/AdBrocker_Admin/admin-login.php");
+  }
+
+
 require 'base.php';
 require '../Modules/adminmodule.php';
 require '../Modules/AdminAPI.php';
@@ -22,11 +28,28 @@ $Name=$_REQUEST['txtname'];
 $Email=$_REQUEST['txtemail'];
 $Contact=$_REQUEST['txtcontact'];
 $About=$_REQUEST['Description'];
-$Image=$_REQUEST['image'];
+$image= $_REQUEST['imageadding'];
 
+// $Defaultimage="../assets/images/No_Image.jpg";
+// // $Image= isset($_REQUEST['imageadding']) ? $_REQUEST['imageadding'] : $Defaultimage;
+
+// $result = isset($_REQUEST['imageadding']) ?? '../assets/images/No_Image.jpg';
+
+// if($result!=1){
+//     // $image="../assets/images/No_Image.jpg";
+//     $image= $_REQUEST['imageadding'];
+// }
+// else{
+//     // $image= $_REQUEST['imageadding'];
+//     $image="../assets/images/No_Image.jpg";
+// }
+
+// global $image;
+echo "<script>console.log('$image')</script>";
 
 
 }
+
 
 
 ?>
@@ -73,13 +96,16 @@ $Image=$_REQUEST['image'];
                 <div class="card radius-10">
                     <div class="card-body">
 
-                        <form>
+                        <form method="post">
                             <h5 class="mb-3"> Profile</h5>
                             <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
                                 <div class="user-change-photo shadow">
+
                                     <img src="<?php echo $row['image'] ?>" height="50px" width="50px"
                                         alt="No Image Inserted" alt="No Image Inserted" name="image" id="image"
                                         onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+
+                                    <!-- <img src="../assets/images/No_Image.jpg" name="image" id="image"> -->
                                 </div>
                                 <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4">
                                     <i class="fa-regular fa-image"></i> <label for="imageadding">Change Photo</label>
@@ -91,84 +117,67 @@ $Image=$_REQUEST['image'];
                             <div class="row g-3">
                                 <div class="col-6">
                                     <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="txtname" name="txtname" value="<?php echo $data['name'] ?>">
+                                    <input type="text" class="form-control" id="txtname" name="txtname"
+                                        value="<?php echo $data['name'] ?>">
                                 </div>
-                                <!-- <div class="col-6">
-        <label class="form-label">Email address</label>
-        <input type="text" class="form-control" value="<?php echo $data['email'] ?>">
-      </div> -->
-
                             </div>
 
                             <h5 class="mb-0 mt-4">Contact Information</h5>
                             <hr>
                             <div class="row g-3">
-                                <!-- <div class="col-12">
-        <label class="form-label">Address</label>
-        <input type="text" class="form-control" value="">
-      </div> -->
                                 <div class="col-6">
                                     <label class="form-label">Contact NO</label>
-                                    <input type="text" class="form-control" id="txtcontact" name="txtcontact" value="<?php echo $data['contactNo'] ?>">
+                                    <input type="text" class="form-control" id="txtcontact" name="txtcontact"
+                                        value="<?php echo $data['contactNo'] ?>">
                                 </div>
                             </div>
                             <br>
                             <div>
                                 <div class="col-6">
                                     <label class="form-label">Email address</label>
-                                    <input type="text" class="form-control" id="txtemail" name="txtemail" value="<?php echo $data['email'] ?>">
+                                    <input type="text" class="form-control" id="txtemail" name="txtemail"
+                                        value="<?php echo $data['email'] ?>">
                                 </div>
-                                <!-- <div class="col-6">
-                                    <label class="form-label">Country</label>
-                                    <input type="text" class="form-control" value="">
-                                </div> -->
-                                <!-- <div class="col-6">
-                                    <label class="form-label">Pin Code</label>
-                                    <input type="text" class="form-control" value="">
-                                </div> -->
-                                <!-- <div class="col-6">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" value="">
-                                </div> -->
                                 <div class="col-12">
                                     <label class="form-label">About Me</label>
-                                    <textarea class="form-control" rows="4" cols="4"
-                                        placeholder="Describe yourself..." name="Description" id="Description"></textarea>
+                                    <textarea class="form-control" rows="4" cols="4" placeholder="Describe yourself..."
+                                        name="Description" id="Description"></textarea>
                                 </div>
                             </div>
                             <div class="text-start mt-3">
-                                <button type="button" class="btn btn-primary px-4" id="btnsavechange" name="btnsavechange">Save Changes</button>
+                                <input type="submit" class="btn btn-primary px-4" id="btnsavechange"
+                                    name="btnsavechange" value="Save Changes" />
                             </div>
+
+                        </form>
+
+
+
+
+
                     </div>
-                    </form>
-
-
-
-
-
                 </div>
             </div>
+            <!--end row-->
+
         </div>
-        <!--end row-->
-
+        <!-- end page content-->
     </div>
-    <!-- end page content-->
-</div>
 
 
 
-<!--Start Back To Top Button-->
-<a href="javaScript:;" class="back-to-top">
-    <ion-icon name="arrow-up-outline"></ion-icon>
-</a>
-<!--End Back To Top Button-->
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </a>
+    <!--End Back To Top Button-->
 
 
 
 
-<!--start overlay-->
-<div class="overlay nav-toggle-icon"></div>
-<!--end overlay-->
+    <!--start overlay-->
+    <div class="overlay nav-toggle-icon"></div>
+    <!--end overlay-->
 
 </div>
 <!--end wrapper-->
@@ -191,18 +200,11 @@ $Image=$_REQUEST['image'];
 
 
 <script>
-function getImage(imagename) {
+let profilepic = document.getElementById("image");
+let inputfile = document.getElementById("imageadding");
 
-    var newimage = imagename.replace(/^.*\\/, "");
-    $("#getImage").html(newimage);
-
-    let profileimage = document.getElementById('profileimage');
-    let inputfile = document.getElementById('profileimg');
-
-    inputfile.onchange = function() {
-        profileimage.src = URL.createObjectURL(inputfile.files[0]);
-    }
-
+inputfile.onchange = function() {
+    profilepic.src = URL.createObjectURL(inputfile.files[0]);
 }
 </script>
 

@@ -14,6 +14,7 @@ function Get_Admin($adm_email, $adm_password)
         $_SESSION["adm_email"] = $mydata['email'];
         $_SESSION["admin_name"] = $mydata['name'];
         $_SESSION["admin_contact"] = $mydata['contactNo'];
+        $_SESSION["adminid"]=$mydata["_id"];
       
 
         header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
