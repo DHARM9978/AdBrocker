@@ -31,6 +31,7 @@ if(isset($_REQUEST['btnchangepassword'])){
 ?>
 <script src="../assets/js/jquery-3.6.0.min.js"></script>
 
+
 <div class="page-content-wrapper">
     <!-- start page content-->
     <div class="page-content">
@@ -45,43 +46,83 @@ if(isset($_REQUEST['btnchangepassword'])){
                             <br>
                             <form action="change_password.php" method="post">
                                 <div class="row g-3">
+
                                     <div class="col-12">
                                         <label class="form-label">Current Password</label>
-                                        <input type="password" class="form-control" value="" id="CurrentPassword"
-                                            name="CurrentPassword" placeholder="Enter Current Password"
-                                            autocomplete=off required>
+                                        <div class="form-group input-group">
+                                            <input type="password" class="form-control" value="" id="CurrentPassword"
+                                                name="CurrentPassword" placeholder="Enter Current Password"
+                                                autocomplete=off required>
+                                            <div class="input-group-prepended">
+                                                <div class="input-group-text">
+                                                    <a href="#" id="icon-click" name="icon-click">
+                                                        <i class="fa-solid fa-eye" id="icon" name="icon">
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <br> -->
                                         <span name="currentpassword" id="currentpassword"
                                             style="color:red;font-weight:600"></span>
+                                        <!-- </div> -->
                                     </div>
+
+                                    <br>
+
                                     <div class="col-12">
                                         <label class="form-label">New Password</label>
-                                        <input type="password" class="form-control" value="" id="NewPassword"
-                                            name="NewPassword" placeholder="Enter New Password" autocomplete=off required>
+                                        <div class="form-group input-group">
+                                            <input type="password" class="form-control" value="" id="NewPassword"
+                                                name="NewPassword" placeholder="Enter New Password" autocomplete=off
+                                                required>
+
+                                            <div class="input-group-prepended">
+                                                <div class="input-group-text">
+                                                    <a href="#" id="icon-click2" name="icon-click2">
+                                                        <i class="fa-solid fa-eye" id="icon2" name="icon2"> </i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <span name="newpassword" id="newpassword"
                                             style="color:red;font-weight:600"></span>
                                     </div>
+
+                                    <br>
                                     <div class="col-12">
                                         <label class="form-label">New Conform Password</label>
+                                        <div class="form-group input-group">
+                                            <input type="password" class="form-control" value="" id="NewConformPassword"
+                                                name="NewConformPassword" placeholder="Enter Conform Password"
+                                                autocomplete=off required>
 
-                                        <input type="password" class="form-control" value="" id="NewConformPassword"
-                                            name="NewConformPassword" placeholder="Enter Conform Password"
-                                            autocomplete=off required>
-                                        <!-- <i class="fa-solid fa-eye"></i>
-                                    <i class="fa-solid fa-eye-slash"></i> -->
+                                            <div class="input-group-prepended">
+                                                <div class="input-group-text">
+                                                    <a href="#" id="icon-click3" name="icon-click3">
+                                                        <i class="fa-solid fa-eye" id="icon3" name="icon3"> </i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                         <span name="conformnewpassword" id="conformnewpassword"
                                             style="color:red;font-weight:600"></span>
                                     </div>
 
                                 </div>
-                            
 
+
+                                <br>
+                                <div class="text-start mt-3">
+                                    <input type="submit" class="btn btn-primary px-4"
+                                        style="margin-left:40%;background-color:#3c096c" id="btnchangepassword"
+                                        name="btnchangepassword" value="Save Changes">
+                                </div>
+                            </form>
                             <br>
-                            <div class="text-start mt-3">
-                                <input type="submit" class="btn btn-primary px-4"
-                                    style="margin-left:40%;background-color:#3c096c" id="btnchangepassword"
-                                    name="btnchangepassword" value="Save Changes">
-                            </div>
-                        </form>
                     </div>
 
                 </div>
@@ -118,6 +159,10 @@ $(document).ready(function() {
         $("#conformnewpassword").hide();
         conformnewpasswordvalidation();
     });
+
+    // $("#btnchangepassword").click(function(){
+    //     finalcheck();
+    // });
 
 });
 
@@ -236,27 +281,79 @@ function conformnewpasswordvalidation() {
     }
 
 }
+
+// function finalcheck(){
+//     if(conformnewpasswordvalidation()=="false"||newpasswordvalidation()=="false"||currnetpasswordvalidation()=="false"){
+//         return false;
+//     }
+// }
+
+
 </script>
-<!-- 
+
 <script>
 $(document).ready(function() {
-    // Toggle password visibility
-    $('#togglePassword').click(function() {
-        var passwordInput = $('#password');
-        var passwordFieldType = passwordInput.attr('type');
 
-        if (passwordFieldType === 'password') {
-            passwordInput.attr('type', 'text');
-            $(this).text('Hide Password');
+
+    $("#icon-click").click(function() {
+
+        $("#icon").toggleClass("fa-solid fa-eye-slash");
+        var eyeIcon = document.getElementById("icon");
+
+        var input = $("#CurrentPassword");
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+
         } else {
-            passwordInput.attr('type', 'password');
-            $(this).text('Show Password');
+            input.attr("type", "password");
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+
+    });
+
+    $("#icon-click2").click(function() {
+
+        // $("#icon2").toggleClass("fa-solid fa-eye-slash");
+        var eyeIcon = document.getElementById("icon2");
+
+        var input = $("#NewPassword");
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            input.attr("type", "password");
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
         }
     });
 
+    $("#icon-click3").click(function() {
+
+        $("#icon3").toggleClass("fa-solid fa-eye-slash");
+        var eyeIcon = document.getElementById("icon3");
+
+        var input = $("#NewConformPassword");
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+
+        } else {
+            input.attr("type", "password");
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+
+    });
 
 });
-</script> -->
+</script>
+
+
 
 </div>
 

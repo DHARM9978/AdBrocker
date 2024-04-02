@@ -114,28 +114,30 @@ deleteAdmin("https://admanager-s9eo.onrender.com/user",$data);
                                                     <?php echo $row['contactNo'] ?>
                                                 </td>
                                                 <td>
-                                                    <?php
+                                                    <b>
+                                                        <?php
                                                         if($row['status']=="Active"){
                                                             ?>
-                                                    <div class="text-center"
+                                                        <!-- <div class="text-center"
                                                         style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo 'Active User'?></p>
-                                                    </div>
-                                                    <?php
+                                                    </div> -->
+                                                        <div style="color:green"><?php  echo "Active Admin" ?></div>
+
+                                                        <?php
                                                         }
                                                         else{
                                                             ?>
-                                                    <div class="text-center"
+                                                        <!-- <div class="text-center"
                                                         style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo 'Inactive User'?></p>
-                                                    </div>
-
-
-                                                    <?php
+                                                    </div> -->
+                                                        <div style="color:red"><?php  echo "InActive Admin" ?></div>
+                                                        <?php
                                                     }
 
                                                     ?>
-
+                                                    </b>
                                                 </td>
                                                 <td>
                                                     <?php  

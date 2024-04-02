@@ -22,8 +22,8 @@ function LoginRequest($url, $data)
     
     // Check for cURL errors
     if (curl_errno($ch)) {
-        // echo 'Curl error: ' . curl_error($ch);
-        echo "<script>alert('Invalid email or password')</script>";
+        echo 'Curl error: ' . curl_error($ch);
+        // echo "<script>alert('Invalid email or password')</script>";
     }
     
     // $decoded =  json_encode($response, true); 

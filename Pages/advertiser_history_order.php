@@ -104,43 +104,54 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                 <?php echo $row['remain_Views']?>
                                             </td>
                                             <td>
+                                                <b>
                                                 <?php
                                                     if($row['status'] == "ongoing"){
                                                         ?>
-                                                <div class="text-center"
+                                                <!-- <div class="text-center"
                                                     style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                     <p class="p-1"><?php echo $row['status']?></p>
-                                                </div>
+                                                </div> -->
+                                                
+                                                <div style="color:green"><?php echo $row['status']?></div>
                                                 <?php } 
                                                     else if ($row['status'] == "pending")
                                                      {?>
-                                                <div class="text-center"
+                                                <!-- <div class="text-center"
                                                     style="background-color: #c9c936; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                     <p class="p-1"><?php echo $row['status']?></p>
-                                                </div>
+                                                </div> -->
+                                                 <div style="color:yellow"><?php echo $row['status']?></div>
                                                 <?php
                                                     }
                                                     else{?>
-                                                <div class="text-center"
+                                                <!-- <div class="text-center"
                                                     style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                     <p class="p-1"><?php echo $row['status']?></p>
-                                                </div>
+                                                </div> -->
+                                                <div style="color:red"><?php echo $row['status']?></div>
                                                 <?php }?>
+                                                    </b>
                                             </td>
                                             <td>
                                                 <b> <?php 
                                                 if($row['approve']==true){
                                                     ?>
-                                                    <div class="text-center"
+                                                    <!-- <div class="text-center"
                                                         style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo "Approved" ?></p>
-                                                    </div>
+                                                    </div> -->
+                                                    
+                                                    <div  style="color:green"><?php echo "Approved" ?></div>
+
                                                     <?php } 
                                                     else { ?>
-                                                    <div class="text-center"
+                                                    <!-- <div class="text-center"
                                                         style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo "Not Approved" ?></p>
-                                                    </div>
+                                                    </div> -->
+                                                    <div  style="color:green"><?php echo "Approved" ?></div>
+
                                                     <?php }
 
                                                         ?>

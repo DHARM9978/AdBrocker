@@ -170,7 +170,7 @@
                         </div>
                         <div class="menu-title">Publisher App Details</div>
                     </a>
-</li>
+                </li>
 
                 <hr>
                 <li class="menu-label">Payment</li>
@@ -197,7 +197,7 @@
 
 
                 </li>
-               
+
 
                 <hr>
                 <li class="menu-label">Profile</li>
@@ -301,6 +301,18 @@
                                         </div>
                                     </a>
                                 </li>
+                                <hr>
+                                <li>
+                                    <a class="dropdown-item" href="../logout.php">
+                                        <div class="d-flex align-items-center">
+                                            <div class="">
+                                                <ion-icon name="person-outline"></ion-icon>
+                                            </div>
+                                            <div class="ms-3"><span>Logout</span></div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
 
             </nav>
         </header>

@@ -29,23 +29,7 @@ $data=totalSubscription($url);
             <div class="breadcrumb-title active pe-3" style="color:#0000FF;border:none;font-size:25px">Subscription
             </div>
 
-            <!-- <div class="ms-auto">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-primary"> <img src="../assets/images/logo-icon-2.png"
-                            class="logo-icon" alt="logo icon" style="height: 20px; width: 20px; color:#923EB9"> Hello
-                        <?php echo ucwords($_SESSION['admin_name'])?>
-                    </button>
-                    <button type="button"
-                        class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                            href="Profile.php">Profile</a>
-                        <a class="dropdown-item" href="../logout.php">Logout</a>
-
-                    </div>
-                </div>
-            </div> -->
+          
         </div>
 
         <main class="" style="color: #0F1035;">
@@ -83,9 +67,9 @@ $data=totalSubscription($url);
                                                 <th>Views</th>
                                                 <th>Price</th>
                                                 <th>Type</th>
-                                                <th>Status</th>
+                                                
                                                 <th>Created Date</th>
-                                        
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
@@ -105,25 +89,7 @@ $data=totalSubscription($url);
                                                 <td>
                                                     <?php echo $row["type"]; ?>
                                                 </td>
-                                                <td>
-                                                   <?php 
-                                                if($row['status']=="Active"){
-                                                    ?>
-                                                        <div class="text-center"
-                                                            style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                            <p class="p-1"><?php echo "Active"?></p>
-                                                        </div>
-                                                        <?php } 
-                                                    else { ?>
-                                                        <div class="text-center"
-                                                            style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                            <p class="p-1"><?php echo "Inactive"?></p>
-                                                        </div>
-                                                        <?php }
-
-                                                        ?>
-                                                    
-                                                </td>
+                                                
                                                 <td>
                                                 <?php  
                                                     $date= $row['createdAt'];
@@ -133,6 +99,28 @@ $data=totalSubscription($url);
 
                                                     ?>
                                                     </td>
+                                                    <td>
+                                                    <b>
+                                                   <?php 
+                                                if($row['status']=="Active"){
+                                                    ?>
+                                                        <!-- <div class="text-center"
+                                                            style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                            <p class="p-1"><?php echo "Active"?></p>
+                                                        </div> -->
+                                                        <div style="color:green"><?php echo "Active"  ?></div>
+                                                        <?php } 
+                                                    else { ?>
+                                                        <!-- <div class="text-center"
+                                                            style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
+                                                            <p class="p-1"><?php echo "Inactive"?></p>
+                                                        </div> -->
+                                                        <div style="color:red"><?php echo "Inactive"  ?></div>
+                                                        <?php }
+
+                                                        ?>
+                                                    </b>
+                                                </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
