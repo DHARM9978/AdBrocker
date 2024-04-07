@@ -7,16 +7,21 @@ if ($_SESSION["is_loggedin"] == false) {
     require '../Modules/SubscriptionAPI.php';
     require '../Modules/subscription_module.php';
     
-
+$Type = "";
     
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-$Name=$_REQUEST['Plan_Name'];
-$Price=$_REQUEST['price'];
-$Views=$_REQUEST['views'];
-$Type=$_REQUEST['Type'];
-
-Add_New_Subscription($Name,$Price,$Views,$Type);
+    // $Type=$_REQUEST['Type'];
+    
+if($_POST['Type'] != "") {
+    $Name=$_POST['Plan_Name'];
+    $Price=$_POST['price'];
+    $Views=$_POST['views'];
+    $Type=$_POST['Type'];
+    Add_New_Subscription($Name,$Price,$Views,$Type);
+} else {
+    echo "<script>alert('Please select the Ad type..')</script>";
+}
 
 }
 
@@ -114,13 +119,13 @@ Add_New_Subscription($Name,$Price,$Views,$Type);
                                     style="color: #0F1035;" required>
                                 <span name="sub_views" id="sub_views" style="color:red ; font-weight:600"></span>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label class="form-label">Advertise Type</label>
-                                <select name="adm_role" class="form-select form-select-md mb-3" name="Type" id="Type" require>
-                                    <option disabled  selected>Select Ad Type</option>
+                                <select name="Type" class="form-select form-select-md mb-3" id="Type">
+                                    <option value="" selected>Select Ad Type</option>
                                     <option value="Banner">Banner</option>
-                                    <option value="Approving Orders">Intrustial</option>
+                                    <option value="Intrustial">Intrustial</option>
                                 </select>
                                 <span name="sub_type" id="sub_type" style="color:red ; font-weight:600"></span>
                             </div>

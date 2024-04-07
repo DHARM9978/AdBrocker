@@ -7,10 +7,13 @@ if ($_SESSION["is_loggedin"] == false) {
 
   require './base.php';
   require '../Modules/TransactionAPI.php';
+  require '../Modules/PublisherAPI.php';
 
  
 $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
- 
+$Data2=totalPublisherAPI("https://admanager-s9eo.onrender.com/fire/publishers");
+
+
 
 ?>
 
@@ -74,11 +77,13 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                             <div class="card-header" style="background-color: #3c096c;">
                                 <h4 class="text-center text-white">Advertiser Details</h4>
                             </div>
+
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example" class="table table-striped data-table" style="width: 100%">
                                         <thead class="text-center">
                                             <tr>
+                                                                                    <!-- <th>Publisher Name</th> -->
                                                 <th>Publisher ID</th>
                                                 <th>Transaction ID</th>
                                                 <th>Amount</th>
@@ -91,11 +96,18 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                                         <tbody class="text-center">
                                             <?php
                                     foreach($Data as $row) {
-                                        if($row['type']=='Debit'){
+                                      
+                                        // foreach($Data2 as $Newrow){
+                                            if($row['type']=='Debit'){
+ 
+                                                // if($row['publisherId']==$Newrow['uid']){                                          
+                                            
                                     ?>
                                             <tr>
 
-
+                                                <!-- <td>
+                                                    <?php echo $Newrow['name']?>
+                                                </td> -->
                                                 <td>
                                                     <?php echo $row['publisherId']?>
                                                 </td>
@@ -109,7 +121,7 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                                                     <?php echo $row['type']  ?>
                                                 </td>
                                                 <td>
-                                                <?php  
+                                                    <?php  
                                                     $date= $row['updatedAt'];
                                                     $finaldate=date("d-m-Y", strtotime($date));
                                                     echo $finaldate;
@@ -119,11 +131,15 @@ $Data=TotalTransaction("https://admanager-s9eo.onrender.com/transaction");
                                                 </td>
 
                                             </tr>
-                                            <?php }} ?>
+                                            <?php }}
+                                        // } 
+                                    // }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -7,8 +7,21 @@ if ($_SESSION["is_loggedin"] == false) {
 require 'base.php';
 require '../Modules/SubscriptionAPI.php';
 $url="https://admanager-s9eo.onrender.com/plans";
+
 $data=totalSubscription($url);
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $id=$_REQUEST['btndelete'];
+    $url="https://admanager-s9eo.onrender.com/plans/goPending";
+    $data=["id"=>$id];    
+    $response=changestatus($url,$data);                  
+
+    if($response==true){
+        echo "<script>alert('Subscription Plan Updated Successfully')</script>";
+    }
+}
+
+$data=totalSubscription($url);
 
 
 ?>
@@ -70,6 +83,7 @@ $data=totalSubscription($url);
                                                 
                                                 <th>Created Date</th>
                                                 <th>Status</th>
+                                                <th>Status Cancle</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
@@ -121,6 +135,19 @@ $data=totalSubscription($url);
                                                         ?>
                                                     </b>
                                                 </td>
+                                                <td>
+                                                <form method="POST" action="./subscription.php">
+                                                        <!-- Create a form for deletion -->
+                                                        <input type="hidden" name="Subscription_id" id="Subscription_id"
+                                                            value="<?php echo $row['_id'] ?>">
+                                                        <button type="submit" class="btn btn-secondary" name="btndelete"
+                                                            id="btndelete" value="<?php echo $row['_id'] ?>"
+                                                            onclick="return confirm('Are you sure , you want to Remove this Admin?')"><i
+                                                                class="far fa-trash-alt"
+                                                                aria-hidden="true"></i></button>
+                                                        
+                                                            </form>
+                                                    </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>

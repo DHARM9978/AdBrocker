@@ -19,6 +19,7 @@ $id=$_REQUEST['advid'];
 
 Pending_to_Approve($id);
 
+
 }
 
 if(isset($_REQUEST['btndelete'])){
@@ -242,3 +243,12 @@ if(isset($_REQUEST['btndelete'])){
 
 <!-- end of publisher details -->
 </div>
+
+<script>
+        // Auto-refresh after form submission
+        window.onload = function() {
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        };
+</script>

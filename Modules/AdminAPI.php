@@ -132,7 +132,49 @@ function Perticular_admin_API($url,$data){
 
 }
 
+function getimage($url,$id){
 
+// API endpoint
+$get_image_url = $url;
+
+// User ID
+$user_id = $id;
+
+// Initialize cURL
+$curl = curl_init();
+
+// Set cURL options
+curl_setopt($curl, CURLOPT_URL, $get_image_url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, [
+    "userid: $user_id",
+]);
+
+// Execute cURL request
+$response = curl_exec($curl);
+
+// Check for errors
+if ($response === false) {
+    $error_message = curl_error($curl);
+    // Handle error
+    echo "cURL error: $error_message";
+} else {
+    // Handle successful response
+    // Base64 encode the image data
+    $base64_image = base64_encode($response);   
+    // Display the image using an <img> tag
+    
+    // echo "<img src='$base64_image' alt='User Image'>";
+    // echo "<script>alert('$base64_image')</script>";
+    
+    return $base64_image;
+}
+
+
+// Close cURL
+curl_close($curl);
+
+}
 
 
 ?>

@@ -86,10 +86,10 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                         if($row['status']=="history"){
                                     ?>
                                         <tr>
-                                        <td>
-                                            <img src="<?php echo $row['image'] ?>" height="50px"
-                                                        width="50px" alt="No Image Inserted" alt="No Image Inserted"
-                                                        onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
+                                            <td>
+                                                <img src="<?php echo $row['image'] ?>" height="50px" width="50px"
+                                                    alt="No Image Inserted" alt="No Image Inserted"
+                                                    onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                             </td>
                                             <td>
                                                 <?php echo $row['title']?>
@@ -105,33 +105,33 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                             </td>
                                             <td>
                                                 <b>
-                                                <?php
+                                                    <?php
                                                     if($row['status'] == "ongoing"){
                                                         ?>
-                                                <!-- <div class="text-center"
+                                                    <!-- <div class="text-center"
                                                     style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                     <p class="p-1"><?php echo $row['status']?></p>
                                                 </div> -->
-                                                
-                                                <div style="color:green"><?php echo $row['status']?></div>
-                                                <?php } 
+
+                                                    <div style="color:green"><?php echo $row['status']?></div>
+                                                    <?php } 
                                                     else if ($row['status'] == "pending")
                                                      {?>
-                                                <!-- <div class="text-center"
+                                                    <!-- <div class="text-center"
                                                     style="background-color: #c9c936; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                     <p class="p-1"><?php echo $row['status']?></p>
                                                 </div> -->
-                                                 <div style="color:yellow"><?php echo $row['status']?></div>
-                                                <?php
+                                                    <div style="color:yellow"><?php echo $row['status']?></div>
+                                                    <?php
                                                     }
                                                     else{?>
-                                                <!-- <div class="text-center"
+                                                    <!-- <div class="text-center"
                                                     style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                     <p class="p-1"><?php echo $row['status']?></p>
                                                 </div> -->
-                                                <div style="color:red"><?php echo $row['status']?></div>
-                                                <?php }?>
-                                                    </b>
+                                                    <div style="color:red"><?php echo $row['status']?></div>
+                                                    <?php }?>
+                                                </b>
                                             </td>
                                             <td>
                                                 <b> <?php 
@@ -141,8 +141,8 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                         style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo "Approved" ?></p>
                                                     </div> -->
-                                                    
-                                                    <div  style="color:green"><?php echo "Approved" ?></div>
+
+                                                    <div style="color:green"><?php echo "Approved" ?></div>
 
                                                     <?php } 
                                                     else { ?>
@@ -150,7 +150,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                         style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
                                                         <p class="p-1"><?php echo "Not Approved" ?></p>
                                                     </div> -->
-                                                    <div  style="color:green"><?php echo "Approved" ?></div>
+                                                    <div style="color:red"><?php echo " Not Approved" ?></div>
 
                                                     <?php }
 
@@ -173,7 +173,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
                                                     ?>
                                             </td>
 
-                                           
+
                                             </td>
 
                                         </tr>

@@ -8,9 +8,10 @@ function Pending_to_Approve($id){
 
 if($response===false){
     echo "<script>alert('Data Can't be Updated');</script>";
+    
 }else{
     echo "<script>alert('Status updated Successfully')</script>";
-    header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+    // header('Location:/AdBrocker_Admin/Pages/advertiser_Approved_orders.php');
 }
     
 }
@@ -26,7 +27,7 @@ function Delete_Order($id){
         echo "<script>alert('Data Can't be Updated');</script>";
     }else{
         echo "<script>alert('Status updated Successfully')</script>";
-        header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+        // header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
     }
 
 }

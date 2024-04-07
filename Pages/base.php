@@ -64,7 +64,7 @@
                     <img src="../assets/images/logo-icon-2.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <h4 class="logo-text">Adbrokers</h4>
+                    <h4 class="logo-text">Adbroker</h4>
                 </div>
             </div>
             <!--navigation-->
@@ -202,11 +202,11 @@
                 <hr>
                 <li class="menu-label">Profile</li>
                 <li>
-                    <a href="./Profile.php">
+                    <a href="./Profile2.php">
                         <div class="parent-icon">
                             <i class="fa-solid fa-id-badge"></i>
                         </div>
-                        <div class="menu-title">Profile</div>
+                        <div class="menu-title">Edit Profile</div>
                     </a>
 
                 </li>
