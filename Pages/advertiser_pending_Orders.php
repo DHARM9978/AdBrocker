@@ -74,7 +74,7 @@ if(isset($_REQUEST['btndelete'])){
         <div class="p-2">
 
             <div class="text-center mt-2 mb-3">
-                <h2>All Orders</h2>
+                <h2>All Pending Orders</h2>
             </div>
             <br>
             <br>
@@ -143,22 +143,22 @@ if(isset($_REQUEST['btndelete'])){
                                                     if($row['status'] == "ongoing"){
                                                         ?>
                                                 <div class="text-center"
-                                                    style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo $row['status']?></p>
+                                                  >
+                                                    <p class="p-1" style="color:green;font-width:600"><?php echo $row['status']?></p>
                                                 </div>
                                                 <?php } 
                                                     else if ($row['status'] == "pending")
                                                      {?>
                                                 <div class="text-center"
-                                                    style="background-color: #c9c936; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo $row['status']?></p>
+                                                >
+                                                    <p class="p-1" style="color:yellow;font-width:600"><?php echo $row['status']?></p>
                                                 </div>
                                                 <?php
                                                     }
                                                     else{?>
                                                 <div class="text-center"
-                                                    style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo $row['status']?></p>
+                                                   >
+                                                    <p class="p-1" style="color:red;font-width:600"><?php echo $row['status']?></p>
                                                 </div>
                                                 <?php }?>
 
@@ -168,15 +168,13 @@ if(isset($_REQUEST['btndelete'])){
                                                 <?php 
                                                 if($row['approve']==true){
                                                     ?>
-                                                <div class="text-center"
-                                                    style="background-color: #198754; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo "Approved" ?></p>
+                                                <div class="text-center">
+                                                    <p class="p-1" style="color:green"><?php echo "Approved" ?></p>
                                                 </div>
                                                 <?php } 
                                                     else { ?>
-                                                <div class="text-center"
-                                                    style="background-color: #dc3545; color: white;border-radius: 4px;font-weight: bold;box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.2), 3px 6px 9px 0 rgba(0, 0, 0, 0.19);">
-                                                    <p class="p-1"><?php echo "Not Approved" ?></p>
+                                                <div class="text-center">
+                                                    <p class="p-1" style="color:red"><?php echo "Not Approved" ?></p>
                                                 </div>
                                                 <?php }
 

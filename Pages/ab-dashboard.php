@@ -5,7 +5,7 @@ if ($_SESSION["is_loggedin"] == false) {
 }
 
 require './base.php';
-require '../Modules/AdminAPI.php';
+// require '../Modules/AdminAPI.php';
 require '../Modules/AdvertiserAPI.php';
 require '../Modules/PublisherAPI.php';
 require "../Modules/AdvertiseAPI.php";
@@ -178,14 +178,14 @@ foreach ($Data as $item) {
 
 
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6">
             <canvas id="myChart"></canvas>
         </div>
         <div class="col-md-6">
             <canvas id="myChart1"></canvas>
         </div>
-    </div>
+    </div> -->
 </div>
 <!-- end page content-->
 </div>

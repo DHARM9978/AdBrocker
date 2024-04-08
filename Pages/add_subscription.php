@@ -170,6 +170,10 @@ $(document).ready(function() {
         validatetype();
     });
 
+    $("#add_new_subscription").click(function(){
+        return validatesubname() && validateprice() && validateviews() && validatetype();
+    });
+
 });
 
 function validatesubname() {

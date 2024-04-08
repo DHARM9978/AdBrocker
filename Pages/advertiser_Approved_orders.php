@@ -53,7 +53,7 @@ $Data=totalAdvertiseAPI("https://admanager-s9eo.onrender.com/advertise");
         <div class="p-2">
 
             <div class="text-center mt-2 mb-3">
-                <h2>All Orders</h2>
+                <h2>All Approved Orders</h2>
             </div>
             <br>
             <br>

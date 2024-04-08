@@ -6,9 +6,9 @@ if ($_SESSION["is_loggedin"] == false) {
   }
 
 
-// require 'base.php';  
+require 'base.php';  
 require '../Modules/adminmodule.php';
-require '../Modules/AdminAPI.php';
+// require '../Modules/AdminAPI.php';
 require '../Modules/ImageUploadAPI.php';
 
 
@@ -22,16 +22,8 @@ $data = json_decode($data2, true);
 
 $id=$_SESSION["adminid"];
 
-$imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
-echo "$imagedata";
-echo '<img src="data:image/jpeg;base64,' . base64_encode($imagedata) . '" alt="Image">';
+// $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
 
-// echo "$imagedata";
-// $image_data = base64_decode($imagedata);
-// echo "$image_data";
-// file_put_contents('image.jpg', $image_data);
-
-// echo "<script>console.log('$imagedata')</script>";
 
 
 
@@ -67,10 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imageadding"])) {
     $data=["userId"=>$id,"name"=>$name,"email"=>$email,"contactNo"=>$contact];
     updateProfile($url,$data);
 
+    // $_SESSION["is_loggedin"] = false; 
+    // header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+  
+
 }
 
 ?>
-
+<script src="../assets/js/jquery-3.6.0.min.js"></script>
 
 <!-- start page content wrapper-->
 <div class="page-content-wrapper">
@@ -116,8 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imageadding"])) {
                             <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
                                 <div class="user-change-photo shadow">
 
-                                    <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px" width="50px"
-                                        alt="No Image Inserted" alt="No Image Inserted" name="image" id="image"
+                                    <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px"
+                                        width="50px" alt="No Image Inserted" alt="No Image Inserted" name="image"
+                                        id="image"
                                         onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
 
 
@@ -128,47 +125,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imageadding"])) {
                                 </button>
                                 <input type="file" id="imageadding" name="imageadding" style="display:none">
                             </div>
+
                             <h5 class="mb-0 mt-4">User Information</h5>
                             <hr>
                             <div class="row g-3">
                                 <div class="col-6">
                                     <label class="form-label">Name</label>
                                     <input type="text" class="form-control" id="txtname" name="txtname"
-                                    value="<?php echo $data['name']; ?>">
-                                     
-                                    <!-- <span style="coloe:red" name="spanname" id="spanname"></span> -->
+                                        value="<?php echo $data['name']; ?>">
+
+                                    <span style="color:red;font-weight:600" name="spanname" id="spanname"></span>
                                 </div>
                             </div>
 
                             <h5 class="mb-0 mt-4">Contact Information</h5>
                             <hr>
+
                             <div class="row g-3">
                                 <div class="col-6">
                                     <label class="form-label">Contact NO</label>
-                                    <input type="text" class="form-control" id="txtcontact" name="txtcontact"
-                                    value="<?php echo $data['contactNo']; ?>">
-                                    <span style="coloe:red" name="spancontact" id="spancontact"></span>
+                                    <input type="tel" class="form-control" id="txtcontact" name="txtcontact"
+                                        value="<?php echo $data['contactNo']; ?>" maxlength="10" autocomplete="off"
+                                        pattern="[0-9]*"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                        required>
+                                    <span style="color:red;font-weight:600" name="spancontact" id="spancontact"></span>
                                 </div>
                             </div>
+
                             <br>
-                            <div>
+
+                            <div class="row g-3">
                                 <div class="col-6">
                                     <label class="form-label">Email address</label>
-                                    <input type="text" class="form-control" id="txtemail" name="txtemail"
-                                    value="<?php echo $data['email']; ?>"  >
-                                    <span style="coloe:red" name="spanemail " id="spanemail "></span>
+                                    <input type="email" class="form-control" id="txtemail" name="txtemail"
+                                        value="<?php echo $data['email']; ?>" required>
+                                    <!-- <span style="color:red" name="spanemail " id="spanemail "></span> -->
+                                    <span id="spanemail" name="spanemail" style="color: red;font-weight:600"></span>
+
                                 </div>
-                                <!-- <div class="col-12">
-                                    <label class="form-label">About Me</label>
-                                    <textarea class="form-control" rows="4" cols="4" placeholder="Describe yourself..."
-                                        name="Description" id="Description"></textarea>
-                                </div> -->
                             </div>
-                            <div class="text-start mt-3">
+
+                            <br>
+                            <div class=" text-start mt-3">
                                 <input type="submit" class="btn btn-primary px-4" id="btnsavechange"
-                                    name="btnsavechange" value="Save Changes" />
+                                    name="btnsavechange" value="Save Changes" required>
                             </div>
-                           
+
 
                         </form>
 
@@ -214,20 +217,101 @@ inputfile.onchange = function() {
     // alert(profilepic.src);
 }
 </script>
-<!-- 
-<script>
 
-$(document).ready(function(){
+<script>
+$(document).ready(function() {
 
     $("#txtname").blur(function() {
         $("#spanname").hide();
         validatesubname();
     });
 
-}) -->
+    $("#txtemail").blur(function() {
+        $("#spanemail").hide();
+        validateemail();
+    });
 
 
+    $("#txtcontact").blur(function() {
+        $("#spancontact").hide();
+        validatecontact();
+    });
 
+
+    $("#txtcontact").click(function() {
+       return validatesubname() && validateemail() &&  validatecontact();
+    });
+
+});
+
+
+function validatesubname() {
+    var namespecialcharacter = /^[A-Za-z0-9]+$/
+    if ($("#txtname").val() == "") {
+        // $("#txtname").css("border", "2px solid red");
+        $("#spanname").show();
+        $("#spanname").html("Name can't be empty");
+        return false;
+    } else if (!namespecialcharacter.test($("#adm_name").val())) {
+        // $("#txtname").css("border", "2px solid red");
+        $("#spanname").show();
+        $("#spanname").html("Name should not containe special characters");
+        return false;
+    } else {
+        // $("#txtname").css("border", "1px solid black");
+        $("#spanname").hide();
+        return true;
+    }
+}
+
+function validateemail() {
+    var email = $("#txtemail").val();
+    if (email == "") {
+        // $("#adm_email").css("border", "2px solid red");
+        $("#spanemail").show();
+        $("#spanemail").html("Email id can't be empty");
+        return false;
+    } else if (IsEmail(email) == false) {
+        // $("#adm_email").css("border", "2px solid red");
+        $("#spanemail").show();
+        $("#spanemail").html("Email id is not in a proper formate");
+        return false;
+    } else {
+        // $("#adm_email").css("border", "none");
+        $("#spanemail").hide();
+        return true;
+    }
+
+    function IsEmail(email) {
+        const regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!regex.test(email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+}
+
+function validatecontact() {
+    contactnumberlength = $("#txtcontact").val();
+    if ($("#txtcontact").val() == "") {
+        // $("#txtcontact").css("border", "2px solid red");
+        $("#spancontact").show();
+        $("#spancontact").html("Contact should not be empty");
+        return false;
+    } else if (contactnumberlength.length < 10) {
+        // $("#txtcontact").css("border", "2px solid red");
+        $("#spancontact").show();
+        $("#spancontact").html("Contact number must containe 10 digits");
+        return false;
+    } else {
+        // $("#txtcontact").css("border", "none");
+        $("#spancontact").hide();
+        return true;
+    }
+}
 </script>
 
 

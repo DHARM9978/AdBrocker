@@ -160,9 +160,9 @@ $(document).ready(function() {
         conformnewpasswordvalidation();
     });
 
-    // $("#btnchangepassword").click(function(){
-    //     finalcheck();
-    // });
+    $("#btnchangepassword").click(function(){
+        return currnetpasswordvalidation() &&  checkpassword() &&  conformnewpasswordvalidation();
+    });
 
 });
 
@@ -282,11 +282,6 @@ function conformnewpasswordvalidation() {
 
 }
 
-// function finalcheck(){
-//     if(conformnewpasswordvalidation()=="false"||newpasswordvalidation()=="false"||currnetpasswordvalidation()=="false"){
-//         return false;
-//     }
-// }
 
 
 </script>

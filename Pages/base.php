@@ -1,3 +1,15 @@
+<?php
+
+require '../Modules/AdminAPI.php';
+
+$id=$_SESSION["adminid"];
+$imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -123,7 +135,7 @@
                     <a href="advertiser_all_orders.php">
                         <div class="parent-icon">
                             <!-- <ion-icon name="server-outline"></ion-icon> -->
-                            <i class="fa-solid fa-image"></i>
+                            <img src="../assets/Icons/totalorder.png" height="25px" width="25px">
                         </div>
                         <div class="menu-title">Total Orders</div>
                     </a>
@@ -133,7 +145,7 @@
                 <li>
                     <a href="advertiser_Approved_orders.php">
                         <div class="parent-icon">
-                            <ion-icon name="newspaper-outline"></ion-icon>
+                            <img src="../assets/Icons/approveorder.png" height="25px" width="25px">
                         </div>
                         <div class="menu-title">Approved Orders</div>
                     </a>
@@ -143,7 +155,7 @@
                 <li>
                     <a href="advertiser_history_order.php">
                         <div class="parent-icon">
-                            <ion-icon name="newspaper-outline"></ion-icon>
+                            <img src="../assets/Icons/historyorder.png" height="25px" width="25px">
                         </div>
                         <div class="menu-title">History Orders</div>
                     </a>
@@ -154,7 +166,7 @@
                 <li>
                     <a href="advertiser_pending_Orders.php">
                         <div class="parent-icon">
-                            <ion-icon name="newspaper-outline"></ion-icon>
+                            <img src="../assets/Icons/pendingorder.png" height="25px" width="25px">
                         </div>
                         <div class="menu-title">Pending Orders</div>
                     </a>
@@ -166,7 +178,7 @@
                 <li>
                     <a href="./publisher_app_data.php">
                         <div class="parent-icon">
-                            <ion-icon name="person-circle-outline"></ion-icon>
+                        <i class="fa-brands fa-app-store"></i>
                         </div>
                         <div class="menu-title">Publisher App Details</div>
                     </a>
@@ -178,7 +190,7 @@
                 <li>
                     <a href="./AdvertiserTransaction.php">
                         <div class="parent-icon">
-                            <ion-icon name="person-circle-outline"></ion-icon>
+                        <i class="fa-solid fa-credit-card"></i>
                         </div>
                         <div class="menu-title">Advertiser</div>
                     </a>
@@ -187,16 +199,13 @@
                 <li>
                     <a href="./PublisherTransaction.php">
                         <div class="parent-icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        <i class="fa-regular fa-money-bill-1"></i>
                         </div>
                         <div class="menu-title">Publisher</div>
                     </a>
-
-
-
-
-
                 </li>
+
+                
 
 
                 <hr>
@@ -234,7 +243,7 @@
         <!--end sidebar -->
 
         <!--start top header-->
-        <header class="top-header">
+        <header class="top-header" style="box-shadow:0px 0px 15px 0px rgba(0,0,0,0.1);">
             <nav class="navbar navbar-expand gap-3">
                 <div class="toggle-icon">
                     <ion-icon name="menu-outline"></ion-icon>
@@ -266,8 +275,8 @@
                                 data-bs-toggle="dropdown">
                                 <div class="user-setting">
 
-                                    <img src="<?php echo $row['image'] ?>" height="50px" class="user-img" width="50px"
-                                        alt="No Image Inserted" alt="No Image Inserted"
+                                    <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px" class="user-img" width="50px"
+                                        alt="No Image Inserted"
                                         onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                 </div>
                             </a>
@@ -276,7 +285,7 @@
                                     <a class="dropdown-item" href="javascript:;">
                                         <div class="d-flex flex-row align-items-center gap-2">
 
-                                            <img src="<?php echo $row['image'] ?>" height="50px" class="rounded-circle"
+                                            <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px" class="rounded-circle"
                                                 width="50px" alt="No Image Inserted" alt="No Image Inserted"
                                                 onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
 
@@ -306,7 +315,7 @@
                                     <a class="dropdown-item" href="../logout.php">
                                         <div class="d-flex align-items-center">
                                             <div class="">
-                                                <ion-icon name="person-outline"></ion-icon>
+                                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                             </div>
                                             <div class="ms-3"><span>Logout</span></div>
                                         </div>

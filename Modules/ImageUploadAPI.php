@@ -74,7 +74,7 @@ function updateProfile($url,$data){
     echo "<script>alert('Data Upadted Successfully')</script>";
  }
 
- 
+//  echo $response;
  // $decoded =  json_encode($response, true); 
  return $response;
 

@@ -6,7 +6,7 @@ if ($_SESSION["is_loggedin"] == false) {
   
 require 'base.php';
 require '../Modules/adminmodule.php';
-require '../Modules/AdminAPI.php';
+// require '../Modules/AdminAPI.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -174,6 +174,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $("#adm_password_error").hide();
                     passwordvalidation();
                 });
+
+                $("#add_new_admin").click(function() {
+                    return namevalidation() && emailvalidation2() && contactvalidation() && passwordvalidation(); 
+                });
+
             });
 
             // Email validation for blur event
@@ -229,7 +234,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             function contactvalidation() {
 
-                contactnumberlength = $("#adm_contact").val();
+                var contactnumberlength = $("#adm_contact").val();
                 if ($("#adm_contact").val() == "") {
                     $("#adm_contact").css("border", "2px solid red");
                     $("#adm_contact_error").show();
@@ -291,4 +296,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 </div>
-

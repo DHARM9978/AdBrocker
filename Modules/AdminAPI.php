@@ -48,6 +48,8 @@ function AddAdmin($url, $data)
     if (curl_errno($ch)) {
         $error= 'Curl error: ' . curl_error($ch);
         echo "<script>alert('$error')</script>";
+    }else{
+        echo "<script>alert('Admin Added Successfully')</script>";
     }
 
     
@@ -132,47 +134,61 @@ function Perticular_admin_API($url,$data){
 
 }
 
+
 function getimage($url,$id){
 
-// API endpoint
-$get_image_url = $url;
-
-// User ID
-$user_id = $id;
-
-// Initialize cURL
-$curl = curl_init();
-
-// Set cURL options
-curl_setopt($curl, CURLOPT_URL, $get_image_url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_HTTPHEADER, [
-    "userid: $user_id",
-]);
-
-// Execute cURL request
-$response = curl_exec($curl);
-
-// Check for errors
-if ($response === false) {
-    $error_message = curl_error($curl);
-    // Handle error
-    echo "cURL error: $error_message";
-} else {
-    // Handle successful response
-    // Base64 encode the image data
-    $base64_image = base64_encode($response);   
-    // Display the image using an <img> tag
+    // API endpoint
+    $get_image_url = $url;
+    // echo $get_image_url . '<br>';
     
-    // echo "<img src='$base64_image' alt='User Image'>";
-    // echo "<script>alert('$base64_image')</script>";
+    // User ID
+    $user_id = $id;
+    // echo $user_id;
     
-    return $base64_image;
-}
-
-
-// Close cURL
-curl_close($curl);
+    // Initialize cURL
+    $curl = curl_init();
+    
+    
+    // Set cURL options
+    curl_setopt($curl, CURLOPT_URL, $get_image_url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        "userid: $user_id",
+    ]);
+    
+    
+    curl_setopt($curl, CURLOPT_POST, true);
+    
+    // Set the request body to an empty string (since we're sending headers only)
+    curl_setopt($curl, CURLOPT_POSTFIELDS, '');
+    
+    
+    // Execute cURL request
+    $response = curl_exec($curl);
+    
+    // Check for errors
+    if ($response === false) {
+        $error_message = curl_error($curl);
+        // Handle error
+        echo "cURL error: $error_message";
+        
+    } else {
+        // Handle successful response
+        // Base64 encode the image data
+        // echo $response;
+        $base64_image = base64_encode($response);   
+        // Display the image using an <img> tag
+        
+        // echo "<img src='$base64_image' alt='User Image'>";
+        // echo '<img src="data:image/jpeg;base64,' . $base64_image . '" alt="User Image">';
+        // echo "<script>alert('$base64_image')</script>";
+        // echo $base64_image;
+        return $base64_image;
+    }
+    
+    
+    // Close cURL
+    curl_close($curl);
 
 }
 

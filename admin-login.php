@@ -11,8 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     Get_Admin($adm_email, $adm_pass);
 }
-    
-
 ?>
 
 
@@ -66,7 +64,7 @@ alt="Cheetah!" /> -->
                             </div>
                             <div class="input-field">
 
-                                <input type="submit" class="submit" value="Log in">
+                                <input type="submit" class="submit" value="Log in" id="btnSubmit">
                             </div>
                             <div class="signin">
                                 <span>Forget Password? <a href="#">Click here</a></span>

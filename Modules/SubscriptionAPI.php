@@ -43,6 +43,9 @@ function AddSubscription($url,$data){
         $error= 'Curl error: ' . curl_error($ch);
         echo "<script>alert('$error')</script>";
     }
+    else{
+        echo "<script>alert('Subscription Added Successfully')</script>";
+    }
 
     
     $decoded =  json_encode($response, true); 

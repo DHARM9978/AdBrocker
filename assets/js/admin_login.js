@@ -9,6 +9,11 @@ $(document).ready(function () {
     $("#txtpassword").blur(function () {
         ValidatePassword();
     });
+
+    $("#btnSubmit").click(function () {
+        return ValidateEmail() && ValidatePassword();
+    });
+
 });
 
 function ValidateEmail() {

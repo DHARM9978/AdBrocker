@@ -9,21 +9,25 @@ function Get_Admin($adm_email, $adm_password)
     $mydata = json_decode($response, true);
     // echo $mydata['contactNo'];
     
-    if ($mydata['email']) {
-        $_SESSION["is_loggedin"] = true; 
-        $_SESSION["adm_email"] = $mydata['email'];
-        $_SESSION["admin_name"] = $mydata['name'];
-        $_SESSION["admin_contact"] = $mydata['contactNo'];
-        $_SESSION["adminid"]=$mydata["_id"];
-      
-
-        header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
-        
+    if (array_key_exists('error_message', $mydata)){
+        echo "<script>alert('$mydata[error_message]')</script>";
     }else{
-        // echo "<script>alert('$response');</script>";
-        echo "<script>alert('$response')</script>";
-    }
+        if ($mydata['email']) {
+        
+            $_SESSION["adm_email"] = $mydata['email'];
+            $_SESSION["admin_name"] = $mydata['name'];
+            $_SESSION["admin_contact"] = $mydata['contactNo'];
+            $_SESSION["adminid"]=$mydata["_id"];
+            $_SESSION["is_loggedin"] = true;
+
+            header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
+            
+        }else{
+            // echo "<script>alert('$response');</script>";
+            echo "<script>alert('$response.error_message')</script>";
+        }
     
+    }
 }
 
 
@@ -36,7 +40,7 @@ function Add_New_Admin($adm_name, $adm_email, $adm_contact, $adm_role, $password
 
     $mydata = json_decode($response, true);
  
-    echo "<script>alert('$mydata')</script>";
+    // echo "<script>alert('$mydata')</script>";
   
 }
 

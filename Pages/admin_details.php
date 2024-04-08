@@ -5,7 +5,7 @@ if ($_SESSION["is_loggedin"] == false) {
   }
 
 require 'base.php';   
-require '../Modules/AdminAPI.php';
+// require '../Modules/AdminAPI.php';
 
 $Data=totalAdminAPI("https://admanager-s9eo.onrender.com/user");
 // $TotalAdmin= count($Data);
