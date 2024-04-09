@@ -19,9 +19,11 @@ if($_POST['Type'] != "") {
     $Views=$_POST['views'];
     $Type=$_POST['Type'];
     Add_New_Subscription($Name,$Price,$Views,$Type);
+    echo '<script>window.location.href = "subscription.php";</script>';
 } else {
     echo "<script>alert('Please select the Ad type..')</script>";
 }
+
 
 }
 

@@ -178,7 +178,7 @@ $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
                 <li>
                     <a href="./publisher_app_data.php">
                         <div class="parent-icon">
-                        <i class="fa-brands fa-app-store"></i>
+                            <i class="fa-brands fa-app-store"></i>
                         </div>
                         <div class="menu-title">Publisher App Details</div>
                     </a>
@@ -190,7 +190,7 @@ $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
                 <li>
                     <a href="./AdvertiserTransaction.php">
                         <div class="parent-icon">
-                        <i class="fa-solid fa-credit-card"></i>
+                            <i class="fa-solid fa-credit-card"></i>
                         </div>
                         <div class="menu-title">Advertiser</div>
                     </a>
@@ -199,13 +199,24 @@ $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
                 <li>
                     <a href="./PublisherTransaction.php">
                         <div class="parent-icon">
-                        <i class="fa-regular fa-money-bill-1"></i>
+                            <i class="fa-regular fa-money-bill-1"></i>
                         </div>
                         <div class="menu-title">Publisher</div>
                     </a>
                 </li>
 
-                
+
+                <hr>
+                <li class="menu-label">Queries</li>
+
+                <li>
+                    <a href="./Query.php">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-clipboard-question"></i>
+                        </div>
+                        <div class="menu-title">Queries</div>
+                    </a>
+                </li>
 
 
                 <hr>
@@ -275,8 +286,8 @@ $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
                                 data-bs-toggle="dropdown">
                                 <div class="user-setting">
 
-                                    <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px" class="user-img" width="50px"
-                                        alt="No Image Inserted"
+                                    <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px"
+                                        class="user-img" width="50px" alt="No Image Inserted"
                                         onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
                                 </div>
                             </a>
@@ -285,8 +296,9 @@ $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
                                     <a class="dropdown-item" href="javascript:;">
                                         <div class="d-flex flex-row align-items-center gap-2">
 
-                                            <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px" class="rounded-circle"
-                                                width="50px" alt="No Image Inserted" alt="No Image Inserted"
+                                            <img src="data:image/jpeg;base64,<?php echo $imagedata ?>" height="50px"
+                                                class="rounded-circle" width="50px" alt="No Image Inserted"
+                                                alt="No Image Inserted"
                                                 onerror="this.onerror=null; this.src='../assets/images/No_Image.jpg';">
 
                                             <div class="">
@@ -315,7 +327,7 @@ $imagedata=getimage("https://admanager-s9eo.onrender.com/images/getImage",$id);
                                     <a class="dropdown-item" href="../logout.php">
                                         <div class="d-flex align-items-center">
                                             <div class="">
-                                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                             </div>
                                             <div class="ms-3"><span>Logout</span></div>
                                         </div>

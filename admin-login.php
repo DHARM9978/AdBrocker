@@ -51,7 +51,12 @@ alt="Cheetah!" /> -->
 
                         <form name="loginform" method="post">
                             <div class="input-field">
-                                <input type="email" class="input" id="txtemail" name="adm_email" value="" autocomplete="off"
+                                <input type="email" class="input" id="txtemail" name="adm_email" value="" autocomplete="off" 
+                                onkeyup="
+  var start = this.selectionStart;
+  var end = this.selectionEnd;
+  this.value = this.value.toLowerCase();
+  this.setSelectionRange(start, end)";
                                     required="Email field can't be empty">
                                 <label for="email">Email</label>
                                 <span id="emailerror" class="error"></span>
@@ -66,9 +71,9 @@ alt="Cheetah!" /> -->
 
                                 <input type="submit" class="submit" value="Log in" id="btnSubmit">
                             </div>
-                            <div class="signin">
+                            <!-- <div class="signin">
                                 <span>Forget Password? <a href="#">Click here</a></span>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                 </div>

@@ -58,10 +58,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imageadding"])) {
     $url="https://admanager-s9eo.onrender.com/user/updateUser";
     $data=["userId"=>$id,"name"=>$name,"email"=>$email,"contactNo"=>$contact];
     updateProfile($url,$data);
+    $_SESSION["adm_email"] = $email;
+    $_SESSION["admin_name"] = $name;
+    $_SESSION["admin_contact"] = $contact;
 
-    // $_SESSION["is_loggedin"] = false; 
-    // header('Location:/AdBrocker_Admin/Pages/ab-dashboard.php');
-  
+
+    echo '<script>window.location.href = "Profile2.php";</script>';  
 
 }
 
@@ -159,7 +161,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imageadding"])) {
                                 <div class="col-6">
                                     <label class="form-label">Email address</label>
                                     <input type="email" class="form-control" id="txtemail" name="txtemail"
-                                        value="<?php echo $data['email']; ?>" required>
+                                        value="<?php echo $data['email']; ?>"  onkeyup="
+  var start = this.selectionStart;
+  var end = this.selectionEnd;
+  this.value = this.value.toLowerCase();
+  this.setSelectionRange(start, end)"; required>
                                     <!-- <span style="color:red" name="spanemail " id="spanemail "></span> -->
                                     <span id="spanemail" name="spanemail" style="color: red;font-weight:600"></span>
 

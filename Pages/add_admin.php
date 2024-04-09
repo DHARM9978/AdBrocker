@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   
     Add_New_Admin($adm_name, $adm_email, $adm_contact, $adm_role, $adm_password);
+    echo '<script>window.location.href = "admin_details.php";</script>';
 }
 
 ?>
@@ -105,7 +106,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="mb-3">
                                 <label class="form-label">Admin Email Address</label>
                                 <input type="email" class="form-control" id="adm_email" name="adm_email"
-                                    placeholder="Email:-" autocomplete="off" style="color: #0F1035;" required>
+                                    placeholder="Email:-" autocomplete="off" style="color: #0F1035;"
+                                    onkeyup="
+  var start = this.selectionStart;
+  var end = this.selectionEnd;
+  this.value = this.value.toLowerCase();
+  this.setSelectionRange(start, end)"; required>
                                 <span id="adm_email_error"
                                     style="color: red; text-align: center; font-weight: 600;"></span>
                             </div>

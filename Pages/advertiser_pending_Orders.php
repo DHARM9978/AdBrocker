@@ -18,6 +18,7 @@ if(isset($_REQUEST['btnapprove'])){
 $id=$_REQUEST['advid'];
 
 Pending_to_Approve($id);
+echo '<script>window.location.href = "advertiser_Approved_orders.php";</script>';
 
 
 }
@@ -27,6 +28,7 @@ if(isset($_REQUEST['btndelete'])){
     $id=$_REQUEST['advdelid'];
     
     Delete_Order($id);
+    echo '<script>window.location.href = "advertiser_history_order.php";</script>';
     
 }
     
